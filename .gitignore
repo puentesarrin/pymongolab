@@ -1,0 +1,7 @@
+*.nja
+*.pyc
+*.so
+*~
+build/*
+doc/build/*
+doc/_templates/*
