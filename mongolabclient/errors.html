@@ -1,0 +1,184 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>errors – Exceptions raised by the mongolabclient package &mdash; PyMongoLab 1.0rc1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0rc1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="PyMongoLab 1.0rc1 documentation" href="../index.html" />
+    <link rel="up" title="MongoLabClient" href="index.html" />
+    <link rel="next" title="PyMongoLab" href="../pymongolab/index.html" />
+    <link rel="prev" title="validators – Tools for checking operations parameters" href="validators.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">PyMongoLab 1.0rc1 documentation</a></div>
+        <div class="rel">
+          <a href="validators.html" title="validators – Tools for checking operations parameters"
+             accesskey="P">previous</a> |
+          <a href="../pymongolab/index.html" title="PyMongoLab"
+             accesskey="N">next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+<a href="https://github.com/puentesarrin/pymongolab">
+    <img style="position: absolute; top: 0; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+    alt="Fork me on GitHub">
+</a>
+
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-mongolabclient.errors">
+<span id="errors-exceptions-raised-by-the-mongolabclient-package"></span><h1><tt class="xref py py-mod docutils literal"><span class="pre">errors</span></tt> &#8211; Exceptions raised by the <a class="reference internal" href="index.html#module-mongolabclient" title="mongolabclient: HTTP requests implementation for MongoLab REST API"><tt class="xref py py-mod docutils literal"><span class="pre">mongolabclient</span></tt></a> package<a class="headerlink" href="#module-mongolabclient.errors" title="Permalink to this headline">¶</a></h1>
+<dl class="exception">
+<dt id="mongolabclient.errors.BadAPIKeyFormat">
+<em class="property">exception </em><tt class="descclassname">mongolabclient.errors.</tt><tt class="descname">BadAPIKeyFormat</tt><big>(</big><em>api_key</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/errors.html#BadAPIKeyFormat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.errors.BadAPIKeyFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
+<p>An exception that will raise when the API key is having a bad format.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mongolabclient.errors.InvalidAPIKey">
+<em class="property">exception </em><tt class="descclassname">mongolabclient.errors.</tt><tt class="descname">InvalidAPIKey</tt><big>(</big><em>api_key</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/errors.html#InvalidAPIKey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.errors.InvalidAPIKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
+<p>An exception that will raise when the API key is invalid.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mongolabclient.errors.InvalidName">
+<em class="property">exception </em><tt class="descclassname">mongolabclient.errors.</tt><tt class="descname">InvalidName</tt><big>(</big><em>message</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/errors.html#InvalidName"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.errors.InvalidName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
+<p>An exception that will raise when a database name or collection name are
+invalid.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mongolabclient.errors.InvalidUpdateOperator">
+<em class="property">exception </em><tt class="descclassname">mongolabclient.errors.</tt><tt class="descname">InvalidUpdateOperator</tt><big>(</big><em>operator</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/errors.html#InvalidUpdateOperator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.errors.InvalidUpdateOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
+<p>An exception that will raise when any update operator is invalid.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mongolabclient.errors.UnsupportedVersion">
+<em class="property">exception </em><tt class="descclassname">mongolabclient.errors.</tt><tt class="descname">UnsupportedVersion</tt><big>(</big><em>message='Unsupported version'</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/errors.html#UnsupportedVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.errors.UnsupportedVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></tt></p>
+<p>An exception that will raise when the selected version is invalid.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+        </div>
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Usage examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Packages</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">MongoLabClient</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="client.html"><tt class="docutils literal"><span class="pre">client</span></tt> &#8211; HTTP client for MongoLab REST API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings.html"><tt class="docutils literal"><span class="pre">settings</span></tt> &#8211; Setting values for MongoLab REST API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="json_util.html"><tt class="docutils literal"><span class="pre">json_util</span></tt> &#8211; Tools for using Python&#8217;s <tt class="docutils literal"><span class="pre">json</span></tt> module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="validators.html"><tt class="docutils literal"><span class="pre">validators</span></tt> &#8211; Tools for checking operations parameters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href=""><tt class="docutils literal"><span class="pre">errors</span></tt> &#8211; Exceptions raised by the <tt class="docutils literal"><span class="pre">mongolabclient</span></tt> package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pymongolab/index.html">PyMongoLab</a></li>
+</ul>
+</li>
+</ul>
+
+          <h3 style="margin-top: 1.5em;">Search</h3>
+          <form class="search" action="../search.html" method="get">
+            <input type="text" name="q" />
+            <input type="submit" value="Go" />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+          </form>
+          <p class="searchtip" style="font-size: 90%">
+            Enter search terms or a module, class or function name.
+          </p>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="validators.html" title="validators – Tools for checking operations parameters"
+             >previous</a> |
+          <a href="../pymongolab/index.html" title="PyMongoLab"
+             >next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+            <br/>
+            <a href="../_sources/mongolabclient/errors.txt"
+               rel="nofollow">Show Source</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20969608-2']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </body>
+</html>

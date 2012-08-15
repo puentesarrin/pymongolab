@@ -1,0 +1,195 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>connection – Connecting to MongoLab &mdash; PyMongoLab 1.0rc1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0rc1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="PyMongoLab 1.0rc1 documentation" href="../index.html" />
+    <link rel="up" title="PyMongoLab" href="index.html" />
+    <link rel="next" title="database – Database level operations" href="database.html" />
+    <link rel="prev" title="PyMongoLab" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">PyMongoLab 1.0rc1 documentation</a></div>
+        <div class="rel">
+          <a href="index.html" title="PyMongoLab"
+             accesskey="P">previous</a> |
+          <a href="database.html" title="database – Database level operations"
+             accesskey="N">next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+<a href="https://github.com/puentesarrin/pymongolab">
+    <img style="position: absolute; top: 0; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
+    alt="Fork me on GitHub">
+</a>
+
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-pymongolab.connection">
+<span id="connection-connecting-to-mongolab"></span><h1><tt class="xref py py-mod docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab<a class="headerlink" href="#module-pymongolab.connection" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pymongolab.connection.Connection">
+<em class="property">class </em><tt class="descclassname">pymongolab.connection.</tt><tt class="descname">Connection</tt><big>(</big><em>api_key</em>, <em>version='v1'</em>, <em>proxy_url=None</em><big>)</big><a class="reference internal" href="../_modules/pymongolab/connection.html#Connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Instance class with the API key located at
+<a class="reference external" href="https://mongolab.com/user?username=[username">https://mongolab.com/user?username=[username</a>].</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Connection</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
+<span class="go">Connection(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">version</span></tt> parameter is optional, because it is planed for using in
+future versions of REST API.</p>
+</div>
+<p>When your connection needs to set a proxy, you can to set an <cite>str</cite> with the
+Proxy url to <tt class="docutils literal"><span class="pre">proxy_url</span></tt> parameter. If you don&#8217;t set a <tt class="docutils literal"><span class="pre">proxy_url</span></tt>,
+then <a class="reference internal" href="../mongolabclient/client.html#mongolabclient.client.MongoLabClient" title="mongolabclient.client.MongoLabClient"><tt class="xref py py-class docutils literal"><span class="pre">mongolabclient.client.MongoLabClient</span></tt></a> gets system proxy
+settings.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Connection</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">,</span> <span class="n">proxy_url</span><span class="o">=</span><span class="s">&quot;https://127.0.0.1:8000&quot;</span><span class="p">)</span>
+<span class="go">Connection(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="pymongolab.connection.Connection.database_names">
+<tt class="descname">database_names</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pymongolab/connection.html#Connection.database_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection.database_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list with your database names.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="o">.</span><span class="n">database_names</span><span class="p">()</span>
+<span class="go">[u&#39;database&#39;, u&#39;otherdatabase&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pymongolab.connection.Connection.request">
+<tt class="descname">request</tt><a class="reference internal" href="../_modules/pymongolab/connection.html#Connection.request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection.request" title="Permalink to this definition">¶</a></dt>
+<dd><p>An instance of <a class="reference internal" href="../mongolabclient/client.html#mongolabclient.client.MongoLabClient" title="mongolabclient.client.MongoLabClient"><tt class="xref py py-class docutils literal"><span class="pre">mongolabclient.client.MongoLabClient</span></tt></a> used
+for internal calls to MongoLab REST API via <a class="reference internal" href="../mongolabclient/index.html#module-mongolabclient" title="mongolabclient: HTTP requests implementation for MongoLab REST API"><tt class="xref py py-mod docutils literal"><span class="pre">mongolabclient</span></tt></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+        </div>
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Usage examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../mongolabclient/index.html">MongoLabClient</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">PyMongoLab</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href=""><tt class="docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html"><tt class="docutils literal"><span class="pre">database</span></tt> &#8211; Database level operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="collection.html"><tt class="docutils literal"><span class="pre">collection</span></tt> &#8211; Collection level utilities for MongoLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cursor.html"><tt class="docutils literal"><span class="pre">cursor</span></tt> &#8211; Cursor class to iterate over MongoLab query results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          <h3 style="margin-top: 1.5em;">Search</h3>
+          <form class="search" action="../search.html" method="get">
+            <input type="text" name="q" />
+            <input type="submit" value="Go" />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+          </form>
+          <p class="searchtip" style="font-size: 90%">
+            Enter search terms or a module, class or function name.
+          </p>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="index.html" title="PyMongoLab"
+             >previous</a> |
+          <a href="database.html" title="database – Database level operations"
+             >next</a> |
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |
+          <a href="../genindex.html" title="General Index"
+             >index</a>
+            <br/>
+            <a href="../_sources/pymongolab/connection.txt"
+               rel="nofollow">Show Source</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20969608-2']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </body>
+</html>
