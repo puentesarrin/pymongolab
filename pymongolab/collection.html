@@ -10,8 +10,8 @@
     
     <title>collection – Collection level utilities for MongoLab &mdash; PyMongoLab 1.0rc1 documentation</title>
     
-    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -22,9 +22,9 @@
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PyMongoLab 1.0rc1 documentation" href="../index.html" />
     <link rel="up" title="PyMongoLab" href="index.html" />
@@ -67,7 +67,7 @@
 <span id="collection-collection-level-utilities-for-mongolab"></span><h1><tt class="xref py py-mod docutils literal"><span class="pre">collection</span></tt> &#8211; Collection level utilities for MongoLab<a class="headerlink" href="#module-pymongolab.collection" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="pymongolab.collection.Collection">
-<em class="property">class </em><tt class="descclassname">pymongolab.collection.</tt><tt class="descname">Collection</tt><big>(</big><em>database</em>, <em>name</em><big>)</big><a class="reference internal" href="../_modules/pymongolab/collection.html#Collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">pymongolab.collection.</tt><tt class="descname">Collection</tt><big>(</big><em>database</em>, <em>name</em><big>)</big><a class="reference internal" href="../modules/pymongolab/collection.html#Collection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>For instance this class, you needs an instance of
 <a class="reference internal" href="database.html#pymongolab.database.Database" title="pymongolab.database.Database"><tt class="xref py py-class docutils literal"><span class="pre">pymongolab.database.Database</span></tt></a> and the name of your collection.</p>
@@ -100,7 +100,7 @@
 </div>
 <dl class="method">
 <dt id="pymongolab.collection.Collection.count">
-<tt class="descname">count</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pymongolab/collection.html#Collection.count"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.count" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">count</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/collection.html#Collection.count"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the number of documents into a collection.</p>
 <p>Example usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
@@ -113,14 +113,14 @@
 
 <dl class="attribute">
 <dt id="pymongolab.collection.Collection.database">
-<tt class="descname">database</tt><a class="reference internal" href="../_modules/pymongolab/collection.html#Collection.database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.database" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">database</tt><a class="reference internal" href="../modules/pymongolab/collection.html#Collection.database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.database" title="Permalink to this definition">¶</a></dt>
 <dd><p>An instance of <a class="reference internal" href="database.html#pymongolab.database.Database" title="pymongolab.database.Database"><tt class="xref py py-class docutils literal"><span class="pre">pymongolab.database.Database</span></tt></a> used for
 internal calls to MongoLab REST API via <a class="reference internal" href="../mongolabclient/index.html#module-mongolabclient" title="mongolabclient: HTTP requests implementation for MongoLab REST API"><tt class="xref py py-mod docutils literal"><span class="pre">mongolabclient</span></tt></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pymongolab.collection.Collection.find">
-<tt class="descname">find</tt><big>(</big><em>spec_or_id=None</em>, <em>fields={}</em>, <em>skip=0</em>, <em>limit=0</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/pymongolab/collection.html#Collection.find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.find" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">find</tt><big>(</big><em>spec_or_id=None</em>, <em>fields={}</em>, <em>skip=0</em>, <em>limit=0</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../modules/pymongolab/collection.html#Collection.find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.find" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the database.</p>
 <p>Returns an instance of <a class="reference internal" href="cursor.html#pymongolab.cursor.Cursor" title="pymongolab.cursor.Cursor"><tt class="xref py py-class docutils literal"><span class="pre">pymongolab.cursor.Cursor</span></tt></a> with the result
 set.</p>
@@ -157,7 +157,7 @@ of the result set) when returning the results</li>
 
 <dl class="method">
 <dt id="pymongolab.collection.Collection.find_one">
-<tt class="descname">find_one</tt><big>(</big><em>spec_or_id=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/pymongolab/collection.html#Collection.find_one"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.find_one" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">find_one</tt><big>(</big><em>spec_or_id=None</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../modules/pymongolab/collection.html#Collection.find_one"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.find_one" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the database.</p>
 <p>Return an instance of <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> with the first document of query
 result on None if no results.</p>
@@ -186,7 +186,7 @@ value.</li>
 
 <dl class="method">
 <dt id="pymongolab.collection.Collection.insert">
-<tt class="descname">insert</tt><big>(</big><em>doc_or_docs</em><big>)</big><a class="reference internal" href="../_modules/pymongolab/collection.html#Collection.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.insert" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">insert</tt><big>(</big><em>doc_or_docs</em><big>)</big><a class="reference internal" href="../modules/pymongolab/collection.html#Collection.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Insert a document or documents into this collection.</p>
 <p>Example usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">doc</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;foo&quot;</span><span class="p">:</span> <span class="s">&quot;bar&quot;</span><span class="p">}</span>
@@ -210,7 +210,7 @@ returns the number of inserted documents.</p>
 
 <dl class="method">
 <dt id="pymongolab.collection.Collection.remove">
-<tt class="descname">remove</tt><big>(</big><em>spec_or_id=None</em><big>)</big><a class="reference internal" href="../_modules/pymongolab/collection.html#Collection.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.remove" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">remove</tt><big>(</big><em>spec_or_id=None</em><big>)</big><a class="reference internal" href="../modules/pymongolab/collection.html#Collection.remove"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.remove" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove a document or documents into this collection.</p>
 <p>Example usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
@@ -227,7 +227,7 @@ returns the number of inserted documents.</p>
 
 <dl class="method">
 <dt id="pymongolab.collection.Collection.update">
-<tt class="descname">update</tt><big>(</big><em>spec</em>, <em>document</em>, <em>upsert=False</em>, <em>multi=False</em><big>)</big><a class="reference internal" href="../_modules/pymongolab/collection.html#Collection.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.update" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">update</tt><big>(</big><em>spec</em>, <em>document</em>, <em>upsert=False</em>, <em>multi=False</em><big>)</big><a class="reference internal" href="../modules/pymongolab/collection.html#Collection.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.collection.Collection.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update a document or documents into this collection.</p>
 <p>Example usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
@@ -309,7 +309,7 @@ parameter on <cite>True</cite>.</p>
           <a href="../genindex.html" title="General Index"
              >index</a>
             <br/>
-            <a href="../_sources/pymongolab/collection.txt"
+            <a href="../sources/pymongolab/collection.txt"
                rel="nofollow">Show Source</a>
         </div>
 

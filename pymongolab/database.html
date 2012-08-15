@@ -10,8 +10,8 @@
     
     <title>database – Database level operations &mdash; PyMongoLab 1.0rc1 documentation</title>
     
-    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -22,9 +22,9 @@
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PyMongoLab 1.0rc1 documentation" href="../index.html" />
     <link rel="up" title="PyMongoLab" href="index.html" />
@@ -67,7 +67,7 @@
 <span id="database-database-level-operations"></span><h1><tt class="xref py py-mod docutils literal"><span class="pre">database</span></tt> &#8211; Database level operations<a class="headerlink" href="#module-pymongolab.database" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="pymongolab.database.Database">
-<em class="property">class </em><tt class="descclassname">pymongolab.database.</tt><tt class="descname">Database</tt><big>(</big><em>connection</em>, <em>name</em><big>)</big><a class="reference internal" href="../_modules/pymongolab/database.html#Database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">pymongolab.database.</tt><tt class="descname">Database</tt><big>(</big><em>connection</em>, <em>name</em><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>For instance this class, you needs an instance of
 <a class="reference internal" href="connection.html#pymongolab.connection.Connection" title="pymongolab.connection.Connection"><tt class="xref py py-class docutils literal"><span class="pre">pymongolab.connection.Connection</span></tt></a> and the name of your database.</p>
@@ -94,7 +94,7 @@
 </div>
 <dl class="method">
 <dt id="pymongolab.database.Database.collection_names">
-<tt class="descname">collection_names</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pymongolab/database.html#Database.collection_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.collection_names" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">collection_names</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.collection_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.collection_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list with the collection names of your database.</p>
 <p>Example usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
@@ -107,14 +107,14 @@
 
 <dl class="method">
 <dt id="pymongolab.database.Database.command">
-<tt class="descname">command</tt><big>(</big><em>command</em><big>)</big><a class="reference internal" href="../_modules/pymongolab/database.html#Database.command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.command" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">command</tt><big>(</big><em>command</em><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute a database-collection level command via
 <a class="reference internal" href="../mongolabclient/client.html#mongolabclient.client.MongoLabClient.run_command" title="mongolabclient.client.MongoLabClient.run_command"><tt class="xref py py-func docutils literal"><span class="pre">mongolabclient.client.MongoLabClient.run_command()</span></tt></a>.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pymongolab.database.Database.connection">
-<tt class="descname">connection</tt><a class="reference internal" href="../_modules/pymongolab/database.html#Database.connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.connection" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">connection</tt><a class="reference internal" href="../modules/pymongolab/database.html#Database.connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.connection" title="Permalink to this definition">¶</a></dt>
 <dd><p>An instance of <a class="reference internal" href="connection.html#pymongolab.connection.Connection" title="pymongolab.connection.Connection"><tt class="xref py py-class docutils literal"><span class="pre">pymongolab.connection.Connection</span></tt></a> used for
 internal calls to MongoLab REST API via <a class="reference internal" href="../mongolabclient/index.html#module-mongolabclient" title="mongolabclient: HTTP requests implementation for MongoLab REST API"><tt class="xref py py-mod docutils literal"><span class="pre">mongolabclient</span></tt></a>.</p>
 </dd></dl>
@@ -174,7 +174,7 @@ internal calls to MongoLab REST API via <a class="reference internal" href="../m
           <a href="../genindex.html" title="General Index"
              >index</a>
             <br/>
-            <a href="../_sources/pymongolab/database.txt"
+            <a href="../sources/pymongolab/database.txt"
                rel="nofollow">Show Source</a>
         </div>
 

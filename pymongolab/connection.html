@@ -10,8 +10,8 @@
     
     <title>connection – Connecting to MongoLab &mdash; PyMongoLab 1.0rc1 documentation</title>
     
-    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -22,9 +22,9 @@
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PyMongoLab 1.0rc1 documentation" href="../index.html" />
     <link rel="up" title="PyMongoLab" href="index.html" />
@@ -67,7 +67,7 @@
 <span id="connection-connecting-to-mongolab"></span><h1><tt class="xref py py-mod docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab<a class="headerlink" href="#module-pymongolab.connection" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="pymongolab.connection.Connection">
-<em class="property">class </em><tt class="descclassname">pymongolab.connection.</tt><tt class="descname">Connection</tt><big>(</big><em>api_key</em>, <em>version='v1'</em>, <em>proxy_url=None</em><big>)</big><a class="reference internal" href="../_modules/pymongolab/connection.html#Connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">pymongolab.connection.</tt><tt class="descname">Connection</tt><big>(</big><em>api_key</em>, <em>version='v1'</em>, <em>proxy_url=None</em><big>)</big><a class="reference internal" href="../modules/pymongolab/connection.html#Connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Instance class with the API key located at
 <a class="reference external" href="https://mongolab.com/user?username=[username">https://mongolab.com/user?username=[username</a>].</p>
@@ -93,7 +93,7 @@ settings.</p>
 </div>
 <dl class="method">
 <dt id="pymongolab.connection.Connection.database_names">
-<tt class="descname">database_names</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/pymongolab/connection.html#Connection.database_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection.database_names" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">database_names</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/connection.html#Connection.database_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection.database_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list with your database names.</p>
 <p>Example usage:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
@@ -106,7 +106,7 @@ settings.</p>
 
 <dl class="attribute">
 <dt id="pymongolab.connection.Connection.request">
-<tt class="descname">request</tt><a class="reference internal" href="../_modules/pymongolab/connection.html#Connection.request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection.request" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">request</tt><a class="reference internal" href="../modules/pymongolab/connection.html#Connection.request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection.request" title="Permalink to this definition">¶</a></dt>
 <dd><p>An instance of <a class="reference internal" href="../mongolabclient/client.html#mongolabclient.client.MongoLabClient" title="mongolabclient.client.MongoLabClient"><tt class="xref py py-class docutils literal"><span class="pre">mongolabclient.client.MongoLabClient</span></tt></a> used
 for internal calls to MongoLab REST API via <a class="reference internal" href="../mongolabclient/index.html#module-mongolabclient" title="mongolabclient: HTTP requests implementation for MongoLab REST API"><tt class="xref py py-mod docutils literal"><span class="pre">mongolabclient</span></tt></a>.</p>
 </dd></dl>
@@ -166,7 +166,7 @@ for internal calls to MongoLab REST API via <a class="reference internal" href="
           <a href="../genindex.html" title="General Index"
              >index</a>
             <br/>
-            <a href="../_sources/pymongolab/connection.txt"
+            <a href="../sources/pymongolab/connection.txt"
                rel="nofollow">Show Source</a>
         </div>
 

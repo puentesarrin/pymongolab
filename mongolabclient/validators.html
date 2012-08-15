@@ -10,8 +10,8 @@
     
     <title>validators – Tools for checking operations parameters &mdash; PyMongoLab 1.0rc1 documentation</title>
     
-    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -22,9 +22,9 @@
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PyMongoLab 1.0rc1 documentation" href="../index.html" />
     <link rel="up" title="MongoLabClient" href="index.html" />
@@ -67,33 +67,33 @@
 <span id="validators-tools-for-checking-operations-parameters"></span><h1><tt class="xref py py-mod docutils literal"><span class="pre">validators</span></tt> &#8211; Tools for checking operations parameters<a class="headerlink" href="#module-mongolabclient.validators" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="mongolabclient.validators.check_api_key">
-<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">check_api_key</tt><big>(</big><em>api_key</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/validators.html#check_api_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.check_api_key" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">check_api_key</tt><big>(</big><em>api_key</em><big>)</big><a class="reference internal" href="../modules/mongolabclient/validators.html#check_api_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.check_api_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if API key match with the following regular expression:
 <tt class="regexp docutils literal"><span class="pre">[a-z0-9]{24}</span></tt>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mongolabclient.validators.check_database_name">
-<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">check_database_name</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/validators.html#check_database_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.check_database_name" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">check_database_name</tt><big>(</big><em>name</em><big>)</big><a class="reference internal" href="../modules/mongolabclient/validators.html#check_database_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.check_database_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if database name contains invalid characteres.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mongolabclient.validators.check_document_to_update">
-<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">check_document_to_update</tt><big>(</big><em>document</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/validators.html#check_document_to_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.check_document_to_update" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">check_document_to_update</tt><big>(</big><em>document</em><big>)</big><a class="reference internal" href="../modules/mongolabclient/validators.html#check_document_to_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.check_document_to_update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if the update operators from a document are valid.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mongolabclient.validators.check_documents_to_insert">
-<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">check_documents_to_insert</tt><big>(</big><em>doc_or_docs</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/validators.html#check_documents_to_insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.check_documents_to_insert" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">check_documents_to_insert</tt><big>(</big><em>doc_or_docs</em><big>)</big><a class="reference internal" href="../modules/mongolabclient/validators.html#check_documents_to_insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.check_documents_to_insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> item type is an instance of list or an instance
 of <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="mongolabclient.validators.check_list_documents_params">
-<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">check_list_documents_params</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/validators.html#check_list_documents_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.check_list_documents_params" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">check_list_documents_params</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../modules/mongolabclient/validators.html#check_list_documents_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.check_list_documents_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check parameters for REST API list-documents operation evaluating if
 they are correct, removing them if no have a value or raise a TypeError if
 they have a not expected type.</p>
@@ -101,7 +101,7 @@ they have a not expected type.</p>
 
 <dl class="function">
 <dt id="mongolabclient.validators.remove_empty_params">
-<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">remove_empty_params</tt><big>(</big><em>params</em><big>)</big><a class="reference internal" href="../_modules/mongolabclient/validators.html#remove_empty_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.remove_empty_params" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">mongolabclient.validators.</tt><tt class="descname">remove_empty_params</tt><big>(</big><em>params</em><big>)</big><a class="reference internal" href="../modules/mongolabclient/validators.html#remove_empty_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mongolabclient.validators.remove_empty_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove items from a <a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">dict</span></tt></a> if no have a value.</p>
 </dd></dl>
 
@@ -159,7 +159,7 @@ they have a not expected type.</p>
           <a href="../genindex.html" title="General Index"
              >index</a>
             <br/>
-            <a href="../_sources/mongolabclient/validators.txt"
+            <a href="../sources/mongolabclient/validators.txt"
                rel="nofollow">Show Source</a>
         </div>
 
