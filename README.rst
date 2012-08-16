@@ -8,7 +8,9 @@ About
 =====
 
 PyMongoLab is a Python_ client library that contains tools for accessing to
-MongoLab databases via `MongoLab REST API`_ using a similar sintax to PyMongo_.
+MongoLab databases via the `MongoLab REST API`_ using a similar syntax to PyMongo_.
+Useful in cases where network barriers (firewalls, etc.)  prevent use of the
+standard MongoDB driver.
 
 >>> from pymongolab import Connection
 >>> con = Connection("MongoLabAPIKey")
