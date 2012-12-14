@@ -12,8 +12,8 @@ MongoLab databases via the `MongoLab REST API`_ using a similar syntax to PyMong
 Useful in cases where network barriers (firewalls, etc.)  prevent use of the
 standard MongoDB driver.
 
->>> from pymongolab import Connection
->>> con = Connection("MongoLabAPIKey")
+>>> from pymongolab import MongoClient
+>>> con = MongoClient("MongoLabAPIKey")
 >>> db = con.database
 >>> col = db.collection.find()
 >>> list(col)

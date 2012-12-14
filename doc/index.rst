@@ -24,8 +24,8 @@ Packages
 
   .. code-block:: python
 
-     >>> from pymongolab import Connection
-     >>> connection = Connection("MongoLabAPIKey")
+     >>> from pymongolab import MongoClient
+     >>> connection = MongoClient("MongoLabAPIKey")
      >>> db = connection.database
      >>> col = db.collection.find()
      >>> list(col)

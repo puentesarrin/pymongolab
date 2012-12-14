@@ -1,5 +1,5 @@
-:mod:`connection` -- Connecting to MongoLab
--------------------------------------------
+:mod:`connection` -- Connecting to MongoLab -- DEPRECATED
+---------------------------------------------------------
 
 .. automodule:: pymongolab.connection
     :synopsis: Connecting to MongoLab

@@ -12,3 +12,4 @@ DESCENDING = -1
 
 
 from pymongolab.connection import Connection
+from pymongolab.mongo_client import MongoClient

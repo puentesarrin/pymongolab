@@ -4,7 +4,12 @@ from mongolabclient import MongoLabClient
 
 
 class Connection(object):
-    """Instance class with the API key located at
+    """
+    .. warning::
+           **DEPRECATED:** :class:`Connection` is deprecated. Please
+           use :class:`~pymongolab.mongo_client.MongoClient` instead.
+
+    Instance class with the API key located at
     https://mongolab.com/user?username=[username].
 
     Example usage:

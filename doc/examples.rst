@@ -7,19 +7,19 @@ Making a connection
 -------------------
 
 The first step when working with **PyMongoLab** is to create an instance of
-:class:`~pymongolab.connection.Connection`. Doing so is easy:
+:class:`~pymongolab.mongo_client.MongoClient`. Doing so is easy:
 
 .. code-block:: python
 
-   >>> from pymongolab import Connection
-   >>> Connection("MongoLabAPIKey")
+   >>> from pymongolab import MongoClient
+   >>> MongoClient("MongoLabAPIKey")
 
 
 Getting a database
 ------------------
 
 When working with PyMongoLab you access databases using attribute style access
-on :class:`~pymongolab.connection.Connection` instances:
+on :class:`~pymongolab.mongo_client.MongoClient` instances:
 
 .. code-block:: python
 
