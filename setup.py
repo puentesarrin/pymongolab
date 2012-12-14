@@ -10,7 +10,7 @@ except ImportError:
     from setuptools import setup
 from distutils.cmd import Command
 
-version = "1.0rc1"
+version = "1.1"
 
 
 class doc(Command):
