@@ -55,6 +55,7 @@ setup(
     author=u"Jorge Puente Sarrín",
     author_email="puentesarrin@gmail.com",
     url="http://pymongolab.puentesarr.in",
+    py_modules=['mongolabclient', 'pymongolab'],
     keywords=["mongolab", "pymongolab", "mongolabclient", "mongo", "mongodb"],
     install_requires=["pymongo"],
     license="Apache License, Version 2.0",
