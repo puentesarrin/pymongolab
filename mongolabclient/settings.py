@@ -77,7 +77,7 @@ class MongoLabSettings(object):
                 "slug": "databases/%(db)s/collections/%(col)s/%(id)s"},
             RUN_DB_COL_LVL_CMD: {
                 "method": "POST",
-                "slug": "databases/%(db)s/runcommand"}
+                "slug": "databases/%(db)s/runCommand"}
             }
         }
 

@@ -105,6 +105,4 @@ class Database(object):
         """Execute a database-collection level command via
         :func:`mongolabclient.client.MongoLabClient.run_command`.
         """
-        return self.connection.request.run_command(\
-            self.database.name, command
-        )
+        return self.connection.request.run_command(self.name, command)
