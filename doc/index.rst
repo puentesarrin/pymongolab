@@ -42,15 +42,13 @@ You can to use pip_ to install PyMongoLab:
 
 .. code-block:: bash
 
-   $ pip install git+git://github.com/puentesarrin/pymongolab.git
+   $ pip install pymongolab
 
-Or:
+Or using last source:
 
 .. code-block:: bash
 
-   $ git clone git://github.com/puentesarrin/pymongolab.git
-   $ cd pymongolab
-   $ python setup.py install
+   $ pip install git+git://github.com/puentesarrin/pymongolab.git
 
 
 Issues
