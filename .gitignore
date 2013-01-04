@@ -3,5 +3,7 @@
 *.so
 *~
 build/*
+dist/*
+pymongolab.egg-info/*
 doc/build/*
 doc/_templates/*
