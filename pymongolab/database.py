@@ -104,7 +104,7 @@ class Database(object):
     def command(self, command, value=1):
         """Execute a database-collection level command via
         :func:`mongolabclient.client.MongoLabClient.run_command`. The supported
-        methods are listed on MongoLab API Documentation:
+        methods are listed on MongoLab REST API Documentation:
         https://support.mongolab.com/entries/20433053-rest-api-for-mongodb
 
         Example usage:
