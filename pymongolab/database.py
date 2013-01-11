@@ -4,34 +4,34 @@ from pymongolab import collection
 
 class Database(object):
     """For instance this class, you needs an instance of
-    :class:`pymongolab.connection.Connection` and the name of your database.
+    :class:`pymongolab.connection.MongoClient` and the name of your database.
 
     Example usage:
 
     .. code-block:: python
 
-       >>> from pymongolab import Connection, database
-       >>> con = Connection("MongoLabAPIKey")
+       >>> from pymongolab import MongoClient, database
+       >>> con = MongoClient("MongoLabAPIKey")
        >>> database.Database(con, "database")
-       Database(Connection('MongoLabAPIKey', 'v1'), 'database')
+       Database(MongoClient('MongoLabAPIKey', 'v1'), 'database')
 
     Easy usage (Attibute-style access):
 
     .. code-block:: python
 
-       >>> from pymongolab import Connection
-       >>> con = Connection("MongoLabAPIKey")
+       >>> from pymongolab import MongoClient
+       >>> con = MongoClient("MongoLabAPIKey")
        >>> con.database
-       Database(Connection('MongoLabAPIKey', 'v1'), 'database')
+       Database(MongoClient('MongoLabAPIKey', 'v1'), 'database')
 
     Easy usage (Dictionary-style access):
 
     .. code-block:: python
 
-       >>> from pymongolab import Connection
-       >>> con = Connection("MongoLabAPIKey")
+       >>> from pymongolab import MongoClient
+       >>> con = MongoClient("MongoLabAPIKey")
        >>> con["database"]
-       Database(Connection('MongoLabAPIKey', 'v1'), 'database')
+       Database(MongoClient('MongoLabAPIKey', 'v1'), 'database')
     """
 
     def __init__(self, connection, name):
@@ -40,7 +40,7 @@ class Database(object):
 
     @property
     def connection(self):
-        """An instance of :class:`pymongolab.connection.Connection` used for
+        """An instance of :class:`pymongolab.connection.MongoClient` used for
         internal calls to MongoLab REST API via :mod:`mongolabclient`.
         """
         return self.__connection
@@ -62,11 +62,11 @@ class Database(object):
 
         .. code-block:: python
 
-           >>> from pymongolab import Connection
-           >>> con = Connection("MongoLabAPIKey")
+           >>> from pymongolab import MongoClient
+           >>> con = MongoClient("MongoLabAPIKey")
            >>> db = con.database
            >>> db.collection
-           Collection(Database(Connection('MongoLabAPIKey', 'v1'),
+           Collection(Database(MongoClient('MongoLabAPIKey', 'v1'),
            'database'), 'collection')
         """
         return collection.Collection(self, name)
@@ -78,11 +78,11 @@ class Database(object):
 
         .. code-block:: python
 
-           >>> from pymongolab import Connection
-           >>> con = Connection("MongoLabAPIKey")
+           >>> from pymongolab import MongoClient
+           >>> con = MongoClient("MongoLabAPIKey")
            >>> db = con["database"]
            >>> db["collection"]
-           Collection(Database(Connection('MongoLabAPIKey', 'v1'),
+           Collection(Database(MongoClient('MongoLabAPIKey', 'v1'),
            'database'), 'collection')
         """
         return self.__getattr__(name)
@@ -94,8 +94,8 @@ class Database(object):
 
         .. code-block:: python
 
-           >>> from pymongolab import Connection
-           >>> con = Connection("MongoLabAPIKey")
+           >>> from pymongolab import MongoClient
+           >>> con = MongoClient("MongoLabAPIKey")
            >>> con.database.collection_names()
            [u'collection', u'users', u'issues']
         """
