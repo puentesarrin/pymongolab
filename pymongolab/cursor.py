@@ -21,7 +21,8 @@ class Cursor(object):
         self.__count = len(self.__data)
 
     def __getitem__(self, index_or_slice):
-        if isinstance(index_or_slice, int) or isinstance(index_or_slice, slice):
+        if isinstance(index_or_slice, int) or \
+            isinstance(index_or_slice, slice):
             return self.__data[index_or_slice]
         raise TypeError("index_or_slice must be an instance of int or slice")
 

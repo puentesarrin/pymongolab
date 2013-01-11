@@ -7,8 +7,8 @@ __api_key_re = re.compile(r"^[a-z0-9]{24}$")
 
 __param_types = {"spec": dict, "count": bool, "fields": dict, "find_one": bool,
     "sort": dict, "skip": int, "limit": int}
-__default_params = {"spec": {}, "count": False, "fields": {}, "find_one": False,
-    "sort": {}, "skip": 0, "limit": 0}
+__default_params = {"spec": {}, "count": False, "fields": {},
+    "find_one": False, "sort": {}, "skip": 0, "limit": 0}
 __key_params = {"spec": "q", "count": "c", "fields": "f", "find_one": "fo",
     "sort": "s", "skip": "sk", "limit": "l"}
 
@@ -19,7 +19,7 @@ __update_operators = ["$inc", "$set", "$unset", "$push", "$pushAll",
 def check_api_key(api_key):
     """Check if API key match with the following regular expression:
     :regexp:`[a-z0-9]{24}`."""
-    return not (__api_key_re.match(api_key) == None)
+    return not (__api_key_re.match(api_key) is None)
 
 
 def check_database_name(name):
