@@ -143,6 +143,27 @@ class Collection(object):
         """
         return len(self.find())
 
+    def distinct(self, key):
+        """Get a list of distinct values for `key` among all documents in this
+        collection.
+
+        :Parameters:
+            - `key`: name of key for which we want to get the distinct values.
+
+        Example usage:
+
+        .. code-block:: python
+
+           >>> from pymongolab import MongoClient
+           >>> con = MongoClient("MongoLabAPIKey")
+           >>> con.database.collection.distinct("title")
+           [u'first title', u'second title', u'my title', u'your title']
+
+        .. versionadded:: 1.2
+        """
+        return self.database.command({'distinct': self.name,
+        'key': key})['values']
+
     def insert(self, doc_or_docs):
         """Insert a document or documents into this collection.
 
