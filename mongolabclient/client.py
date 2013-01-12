@@ -30,6 +30,7 @@ class MongoLabClient(object):
     def __init__(self, api_key, version=settings.VERSION_1, proxy_url=None):
         self.api_key = api_key
         self.settings = settings.MongoLabSettings(version)
+        self.__content_type = 'application/json;charset=utf-8'
         if proxy_url:
             self.__proxy_handler = urllib2.ProxyHandler({"https": proxy_url})
         else:
@@ -63,7 +64,8 @@ class MongoLabClient(object):
         return (self.base_url + operation["slug"]) % slug_params
 
     def __get_response(self, operation, slug_params={}, **kwargs):
-        """Returns response of HTTP request depending the operation selected."""
+        """Returns response of HTTP request depending the operation
+        selected."""
         operation = self.settings.operations[operation]
         url = self.__get_full_url(operation, slug_params)
         if operation["method"] == "GET":
@@ -73,7 +75,7 @@ class MongoLabClient(object):
         elif operation["method"] == "POST":
             params = kwargs.get("data", {})
             req = urllib2.Request(url + "?apiKey=%s" % self.api_key)
-            req.add_header("Content-Type", "application/json")
+            req.add_header("Content-Type", self.__content_type)
             req.add_data(json.dumps(params, default=json_util.default))
         elif operation["method"] == "PUT":
             params = kwargs["data"]
@@ -81,7 +83,7 @@ class MongoLabClient(object):
             del kwargs["data"]
             qs = urllib.urlencode(kwargs)
             req = urllib2.Request(url + "?%s" % qs)
-            req.add_header("Content-Type", "application/json")
+            req.add_header("Content-Type", self.__content_type)
             req.add_data(json.dumps(params, default=json_util.default))
             req.get_method = lambda: operation["method"]
         else:
