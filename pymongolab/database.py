@@ -168,3 +168,18 @@ class Database(object):
         del result['serverUsed']
         del result['lastOp']
         return result
+
+    def previous_error(self):
+        """Get the most recent error to have occurred on this database.
+
+        Only returns errors that have occurred since the last call to
+        `Database.reset_error_history`. Returns None if no such errors have
+        occurred.
+
+        .. versionadded:: 1.2
+        """
+        error = self.command("getPrevError")
+        if error.get("err", 0) is None:
+            return None
+        del error["serverUsed"]
+        return error
