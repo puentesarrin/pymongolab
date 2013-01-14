@@ -147,3 +147,24 @@ class Database(object):
         if isinstance(command, basestring):
             command = {command: str(value)}
         return self.connection.request.run_command(self.name, command)
+
+    def last_status(self):
+        """Get status information from the last operation.
+
+        Returns a dict with status information.
+
+        Example usage:
+
+        .. code-block:: python
+
+        >>> from pymongolab import MongoClient
+        >>> con = MongoClient("MongoLabAPIKey")
+        >>> con.database.last_status()
+        {'ok': 1.0, 'err': None, 'connectionId': 951470, 'n': 0}
+
+        .. versionadded:: 1.2
+        """
+        result = self.command('getLastError')
+        del result['serverUsed']
+        del result['lastOp']
+        return result
