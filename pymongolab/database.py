@@ -183,3 +183,13 @@ class Database(object):
             return None
         del error["serverUsed"]
         return error
+
+    def reset_error_history(self):
+        """Reset the error history of this database.
+
+        Calls to `Database.previous_error` will only return errors that have
+        occurred since the most recent call to this method.
+
+        .. versionadded:: 1.2
+        """
+        self.command("resetError")
