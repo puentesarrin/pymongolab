@@ -11,5 +11,13 @@ DESCENDING = -1
 """Descending sort order."""
 
 
+OFF = 0
+"""No database profiling."""
+SLOW_ONLY = 1
+"""Only profile slow operations."""
+ALL = 2
+"""Profile all operations."""
+
+
 from pymongolab.connection import Connection
 from pymongolab.mongo_client import MongoClient

@@ -200,6 +200,19 @@ class Database(object):
         del error["serverUsed"]
         return error
 
+    def profiling_level(self):
+        """Get the database's current profiling level.
+
+        Returns one of (:data:`~pymongolab.OFF`,
+        :data:`~pymongolab.SLOW_ONLY`, :data:`~pymongolab.ALL`).
+
+        .. versionadded:: 1.2
+        """
+        result = self.command("profile", -1)
+
+        assert result["was"] >= 0 and result["was"] <= 2
+        return result["was"]
+
     def reset_error_history(self):
         """Reset the error history of this database.
 
