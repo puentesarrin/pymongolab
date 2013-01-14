@@ -148,6 +148,22 @@ class Database(object):
             command = {command: str(value)}
         return self.connection.request.run_command(self.name, command)
 
+    def error(self):
+        """Get a database error if one occured on the last operation.
+
+        Return None if the last operation was error-free. Otherwise return the
+        error that occurred.
+
+        .. versionadded:: 1.2
+        """
+        error = self.command("getLastError")
+        error_msg = error.get("err", "")
+        if error_msg is None:
+            return None
+        del error["serverUsed"]
+        del error['lastOp']
+        return error
+
     def last_status(self):
         """Get status information from the last operation.
 
