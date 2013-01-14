@@ -107,6 +107,8 @@ class Database(object):
         methods are listed on MongoLab REST API Documentation:
         https://support.mongolab.com/entries/20433053-rest-api-for-mongodb
 
+        .. warning:: all of commands on MongoLab REST API are case-sensitive.
+
         Example usage:
 
         A command like ``{dbstats: 1}`` can be sent using:
