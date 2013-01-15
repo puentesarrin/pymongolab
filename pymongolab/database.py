@@ -101,7 +101,7 @@ class Database(object):
         """
         return self.connection.request.list_collections(self.name)
 
-    def command(self, command, value=1):
+    def command(self, command, value=1, **kwargs):
         """Execute a database-collection level command via
         :func:`mongolabclient.client.MongoLabClient.run_command`. The supported
         methods are listed on MongoLab REST API Documentation:
@@ -148,6 +148,7 @@ class Database(object):
         """
         if isinstance(command, basestring):
             command = {command: str(value)}
+        command.update(kwargs)
         return self.connection.request.run_command(self.name, command)
 
     def error(self):
