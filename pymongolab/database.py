@@ -225,3 +225,42 @@ class Database(object):
         .. versionadded:: 1.2
         """
         self.command("resetError")
+
+    def set_profiling_level(self, level, slow_ms=None):
+        """Set the database's profiling level.
+
+        :Parameters:
+          - `level`: Specifies a profiling level, see list of possible values
+            below.
+          - `slow_ms`: Optionally modify the threshold for the profile to
+            consider a query or operation.  Even if the profiler is off queries
+            slower than the `slow_ms` level will get written to the logs.
+
+        Possible `level` values:
+
+        +-------------------------------+------------------------------------+
+        | Level                         | Setting                            |
+        +===============================+====================================+
+        | :data:`~pymongolab.OFF`       | Off. No profiling.                 |
+        +-------------------------------+------------------------------------+
+        | :data:`~pymongolab.SLOW_ONLY` | On. Only includes slow operations. |
+        +-------------------------------+------------------------------------+
+        | :data:`~pymongolab.ALL`       | On. Includes all operations.       |
+        +-------------------------------+------------------------------------+
+
+        Raises :class:`ValueError` if level is not one of
+        (:data:`~pymongolab.OFF`, :data:`~pymongolab.SLOW_ONLY`,
+        :data:`~pymongolab.ALL`).
+
+        .. versionadded:: 1.2
+        """
+        if not isinstance(level, int) or level < 0 or level > 2:
+            raise ValueError("level must be one of (OFF, SLOW_ONLY, ALL)")
+
+        if slow_ms is not None and not isinstance(slow_ms, int):
+            raise TypeError("slow_ms must be an integer")
+
+        if slow_ms is not None:
+            self.command("profile", level, slowms=slow_ms)
+        else:
+            self.command("profile", level)
