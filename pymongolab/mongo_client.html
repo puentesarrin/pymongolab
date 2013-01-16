@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>connection – Connecting to MongoLab – DEPRECATED &mdash; PyMongoLab 1.1 documentation</title>
+    <title>mongo_client – Connecting to MongoLab &mdash; PyMongoLab 1.1 documentation</title>
     
     <link rel="stylesheet" href="../static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PyMongoLab 1.1 documentation" href="../index.html" />
     <link rel="up" title="PyMongoLab" href="index.html" />
-    <link rel="next" title="database – Database level operations" href="database.html" />
-    <link rel="prev" title="mongo_client – Connecting to MongoLab" href="mongo_client.html" /> 
+    <link rel="next" title="connection – Connecting to MongoLab – DEPRECATED" href="connection.html" />
+    <link rel="prev" title="PyMongoLab" href="index.html" /> 
   </head>
   <body>
     <div class="header-wrapper">
@@ -37,9 +37,9 @@
         <div class="headertitle"><a
           href="../index.html">PyMongoLab 1.1 documentation</a></div>
         <div class="rel">
-          <a href="mongo_client.html" title="mongo_client – Connecting to MongoLab"
+          <a href="index.html" title="PyMongoLab"
              accesskey="P">previous</a> |
-          <a href="database.html" title="database – Database level operations"
+          <a href="connection.html" title="connection – Connecting to MongoLab – DEPRECATED"
              accesskey="N">next</a> |
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |
@@ -57,23 +57,18 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="module-pymongolab.connection">
-<span id="connection-connecting-to-mongolab-deprecated"></span><h1><tt class="xref py py-mod docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab &#8211; DEPRECATED<a class="headerlink" href="#module-pymongolab.connection" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-pymongolab.mongo_client">
+<span id="mongo-client-connecting-to-mongolab"></span><h1><tt class="xref py py-mod docutils literal"><span class="pre">mongo_client</span></tt> &#8211; Connecting to MongoLab<a class="headerlink" href="#module-pymongolab.mongo_client" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="pymongolab.connection.Connection">
-<em class="property">class </em><tt class="descclassname">pymongolab.connection.</tt><tt class="descname">Connection</tt><big>(</big><em>api_key</em>, <em>version='v1'</em>, <em>proxy_url=None</em><big>)</big><a class="reference internal" href="../modules/pymongolab/connection.html#Connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection" title="Permalink to this definition">¶</a></dt>
+<dt id="pymongolab.mongo_client.MongoClient">
+<em class="property">class </em><tt class="descclassname">pymongolab.mongo_client.</tt><tt class="descname">MongoClient</tt><big>(</big><em>api_key</em>, <em>version='v1'</em>, <em>proxy_url=None</em><big>)</big><a class="reference internal" href="../modules/pymongolab/mongo_client.html#MongoClient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.mongo_client.MongoClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><strong>DEPRECATED:</strong> <a class="reference internal" href="#pymongolab.connection.Connection" title="pymongolab.connection.Connection"><tt class="xref py py-class docutils literal"><span class="pre">Connection</span></tt></a> is deprecated. Please
-use <a class="reference internal" href="mongo_client.html#pymongolab.mongo_client.MongoClient" title="pymongolab.mongo_client.MongoClient"><tt class="xref py py-class docutils literal"><span class="pre">MongoClient</span></tt></a> instead.</p>
-</div>
 <p>Instance class with the API key located at
 <a class="reference external" href="https://mongolab.com/user?username=[username">https://mongolab.com/user?username=[username</a>].</p>
 <p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Connection</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
-<span class="go">Connection(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MongoClient</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
+<span class="go">MongoClient(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -85,18 +80,18 @@ future versions of REST API.</p>
 Proxy url to <tt class="docutils literal"><span class="pre">proxy_url</span></tt> parameter. If you don&#8217;t set a <tt class="docutils literal"><span class="pre">proxy_url</span></tt>,
 then <a class="reference internal" href="../mongolabclient/client.html#mongolabclient.client.MongoLabClient" title="mongolabclient.client.MongoLabClient"><tt class="xref py py-class docutils literal"><span class="pre">mongolabclient.client.MongoLabClient</span></tt></a> gets system proxy
 settings.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Connection</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">,</span> <span class="n">proxy_url</span><span class="o">=</span><span class="s">&quot;https://127.0.0.1:8000&quot;</span><span class="p">)</span>
-<span class="go">Connection(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MongoClient</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">,</span> <span class="n">proxy_url</span><span class="o">=</span><span class="s">&quot;https://127.0.0.1:8000&quot;</span><span class="p">)</span>
+<span class="go">MongoClient(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;)</span>
 </pre></div>
 </div>
 <dl class="method">
-<dt id="pymongolab.connection.Connection.database_names">
-<tt class="descname">database_names</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/connection.html#Connection.database_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection.database_names" title="Permalink to this definition">¶</a></dt>
+<dt id="pymongolab.mongo_client.MongoClient.database_names">
+<tt class="descname">database_names</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/mongo_client.html#MongoClient.database_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.mongo_client.MongoClient.database_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list with your database names.</p>
 <p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="o">.</span><span class="n">database_names</span><span class="p">()</span>
 <span class="go">[u&#39;database&#39;, u&#39;otherdatabase&#39;]</span>
 </pre></div>
@@ -104,8 +99,8 @@ settings.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="pymongolab.connection.Connection.request">
-<tt class="descname">request</tt><a class="reference internal" href="../modules/pymongolab/connection.html#Connection.request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.connection.Connection.request" title="Permalink to this definition">¶</a></dt>
+<dt id="pymongolab.mongo_client.MongoClient.request">
+<tt class="descname">request</tt><a class="reference internal" href="../modules/pymongolab/mongo_client.html#MongoClient.request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.mongo_client.MongoClient.request" title="Permalink to this definition">¶</a></dt>
 <dd><p>An instance of <a class="reference internal" href="../mongolabclient/client.html#mongolabclient.client.MongoLabClient" title="mongolabclient.client.MongoLabClient"><tt class="xref py py-class docutils literal"><span class="pre">mongolabclient.client.MongoLabClient</span></tt></a> used
 for internal calls to MongoLab REST API via <a class="reference internal" href="../mongolabclient/index.html#module-mongolabclient" title="mongolabclient: HTTP requests implementation for MongoLab REST API"><tt class="xref py py-mod docutils literal"><span class="pre">mongolabclient</span></tt></a>.</p>
 </dd></dl>
@@ -126,8 +121,8 @@ for internal calls to MongoLab REST API via <a class="reference internal" href="
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Packages</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../mongolabclient/index.html">MongoLabClient</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">PyMongoLab</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="mongo_client.html"><tt class="docutils literal"><span class="pre">mongo_client</span></tt> &#8211; Connecting to MongoLab</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href=""><tt class="docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab &#8211; DEPRECATED</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href=""><tt class="docutils literal"><span class="pre">mongo_client</span></tt> &#8211; Connecting to MongoLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="connection.html"><tt class="docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab &#8211; DEPRECATED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="database.html"><tt class="docutils literal"><span class="pre">database</span></tt> &#8211; Database level operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="collection.html"><tt class="docutils literal"><span class="pre">collection</span></tt> &#8211; Collection level utilities for MongoLab</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cursor.html"><tt class="docutils literal"><span class="pre">cursor</span></tt> &#8211; Cursor class to iterate over MongoLab query results</a></li>
@@ -155,16 +150,16 @@ for internal calls to MongoLab REST API via <a class="reference internal" href="
     <div class="footer-wrapper">
       <div class="footer">
         <div class="left">
-          <a href="mongo_client.html" title="mongo_client – Connecting to MongoLab"
+          <a href="index.html" title="PyMongoLab"
              >previous</a> |
-          <a href="database.html" title="database – Database level operations"
+          <a href="connection.html" title="connection – Connecting to MongoLab – DEPRECATED"
              >next</a> |
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |
           <a href="../genindex.html" title="General Index"
              >index</a>
             <br/>
-            <a href="../sources/pymongolab/connection.txt"
+            <a href="../sources/pymongolab/mongo_client.txt"
                rel="nofollow">Show Source</a>
         </div>
 

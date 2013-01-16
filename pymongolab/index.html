@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PyMongoLab &mdash; PyMongoLab 1.0rc1 documentation</title>
+    <title>PyMongoLab &mdash; PyMongoLab 1.1 documentation</title>
     
     <link rel="stylesheet" href="../static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0rc1',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,20 +26,20 @@
     <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PyMongoLab 1.0rc1 documentation" href="../index.html" />
+    <link rel="top" title="PyMongoLab 1.1 documentation" href="../index.html" />
     <link rel="up" title="Packages" href="../modules.html" />
-    <link rel="next" title="connection – Connecting to MongoLab" href="connection.html" />
+    <link rel="next" title="mongo_client – Connecting to MongoLab" href="mongo_client.html" />
     <link rel="prev" title="errors – Exceptions raised by the mongolabclient package" href="../mongolabclient/errors.html" /> 
   </head>
   <body>
     <div class="header-wrapper">
       <div class="header">
         <div class="headertitle"><a
-          href="../index.html">PyMongoLab 1.0rc1 documentation</a></div>
+          href="../index.html">PyMongoLab 1.1 documentation</a></div>
         <div class="rel">
           <a href="../mongolabclient/errors.html" title="errors – Exceptions raised by the mongolabclient package"
              accesskey="P">previous</a> |
-          <a href="connection.html" title="connection – Connecting to MongoLab"
+          <a href="mongo_client.html" title="mongo_client – Connecting to MongoLab"
              accesskey="N">next</a> |
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |
@@ -52,12 +52,6 @@
     <div class="content-wrapper">
       <div class="content">
         <div class="document">
-<a href="https://github.com/puentesarrin/pymongolab">
-    <img style="position: absolute; top: 0; right: 0; border: 0;"
-    src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
-    alt="Fork me on GitHub">
-</a>
-
             
       <div class="documentwrapper">
         <div class="bodywrapper">
@@ -67,6 +61,12 @@
 <span id="pymongolab"></span><h1>PyMongoLab<a class="headerlink" href="#module-pymongolab" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="http://api.mongodb.org/python/current/">PyMongo</a>-flavored package for accessing to MongoLab databases via
 <cite>MongoLabClient</cite>.</p>
+<dl class="data">
+<dt id="pymongolab.ALL">
+<tt class="descclassname">pymongolab.</tt><tt class="descname">ALL</tt><em class="property"> = 2</em><a class="headerlink" href="#pymongolab.ALL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Profile all operations.</p>
+</dd></dl>
+
 <dl class="data">
 <dt id="pymongolab.ASCENDING">
 <tt class="descclassname">pymongolab.</tt><tt class="descname">ASCENDING</tt><em class="property"> = 1</em><a class="headerlink" href="#pymongolab.ASCENDING" title="Permalink to this definition">¶</a></dt>
@@ -79,10 +79,23 @@
 <dd><p>Descending sort order.</p>
 </dd></dl>
 
+<dl class="data">
+<dt id="pymongolab.OFF">
+<tt class="descclassname">pymongolab.</tt><tt class="descname">OFF</tt><em class="property"> = 0</em><a class="headerlink" href="#pymongolab.OFF" title="Permalink to this definition">¶</a></dt>
+<dd><p>No database profiling.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="pymongolab.SLOW_ONLY">
+<tt class="descclassname">pymongolab.</tt><tt class="descname">SLOW_ONLY</tt><em class="property"> = 1</em><a class="headerlink" href="#pymongolab.SLOW_ONLY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only profile slow operations.</p>
+</dd></dl>
+
 <p>Sub-modules:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="connection.html"><tt class="docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mongo_client.html"><tt class="docutils literal"><span class="pre">mongo_client</span></tt> &#8211; Connecting to MongoLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connection.html"><tt class="docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab &#8211; DEPRECATED</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html"><tt class="docutils literal"><span class="pre">database</span></tt> &#8211; Database level operations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collection.html"><tt class="docutils literal"><span class="pre">collection</span></tt> &#8211; Collection level utilities for MongoLab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cursor.html"><tt class="docutils literal"><span class="pre">cursor</span></tt> &#8211; Cursor class to iterate over MongoLab query results</a></li>
@@ -94,7 +107,6 @@
           </div>
         </div>
       </div>
-
         </div>
         <div class="sidebar">
           <h3>Table Of Contents</h3>
@@ -103,7 +115,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Packages</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../mongolabclient/index.html">MongoLabClient</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">PyMongoLab</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="connection.html"><tt class="docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mongo_client.html"><tt class="docutils literal"><span class="pre">mongo_client</span></tt> &#8211; Connecting to MongoLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="connection.html"><tt class="docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab &#8211; DEPRECATED</a></li>
 <li class="toctree-l3"><a class="reference internal" href="database.html"><tt class="docutils literal"><span class="pre">database</span></tt> &#8211; Database level operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="collection.html"><tt class="docutils literal"><span class="pre">collection</span></tt> &#8211; Collection level utilities for MongoLab</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cursor.html"><tt class="docutils literal"><span class="pre">cursor</span></tt> &#8211; Cursor class to iterate over MongoLab query results</a></li>
@@ -128,13 +141,12 @@
       </div>
     </div>
 
-
     <div class="footer-wrapper">
       <div class="footer">
         <div class="left">
           <a href="../mongolabclient/errors.html" title="errors – Exceptions raised by the mongolabclient package"
              >previous</a> |
-          <a href="connection.html" title="connection – Connecting to MongoLab"
+          <a href="mongo_client.html" title="mongo_client – Connecting to MongoLab"
              >next</a> |
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |
@@ -154,17 +166,6 @@
         <div class="clearer"></div>
       </div>
     </div>
-
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-20969608-2']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
 
   </body>
 </html>

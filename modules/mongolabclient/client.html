@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mongolabclient.client &mdash; PyMongoLab 1.0rc1 documentation</title>
+    <title>mongolabclient.client &mdash; PyMongoLab 1.1 documentation</title>
     
     <link rel="stylesheet" href="../../static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '1.0rc1',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,14 +26,14 @@
     <script type="text/javascript" src="../../static/underscore.js"></script>
     <script type="text/javascript" src="../../static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PyMongoLab 1.0rc1 documentation" href="../../index.html" />
+    <link rel="top" title="PyMongoLab 1.1 documentation" href="../../index.html" />
     <link rel="up" title="Module code" href="../index.html" /> 
   </head>
   <body>
     <div class="header-wrapper">
       <div class="header">
         <div class="headertitle"><a
-          href="../../index.html">PyMongoLab 1.0rc1 documentation</a></div>
+          href="../../index.html">PyMongoLab 1.1 documentation</a></div>
         <div class="rel">
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |
@@ -46,12 +46,6 @@
     <div class="content-wrapper">
       <div class="content">
         <div class="document">
-<a href="https://github.com/puentesarrin/pymongolab">
-    <img style="position: absolute; top: 0; right: 0; border: 0;"
-    src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
-    alt="Fork me on GitHub">
-</a>
-
             
       <div class="documentwrapper">
         <div class="bodywrapper">
@@ -90,6 +84,7 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">VERSION_1</span><span class="p">,</span> <span class="n">proxy_url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">api_key</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">MongoLabSettings</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__content_type</span> <span class="o">=</span> <span class="s">&#39;application/json;charset=utf-8&#39;</span>
         <span class="k">if</span> <span class="n">proxy_url</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__proxy_handler</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">({</span><span class="s">&quot;https&quot;</span><span class="p">:</span> <span class="n">proxy_url</span><span class="p">})</span>
         <span class="k">else</span><span class="p">:</span>
@@ -99,7 +94,8 @@
 
     <span class="k">def</span> <span class="nf">__validate_api_key</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Validate API Key format and make a GET request to REST API base url:</span>
-<span class="sd">        https://api.mongolab.com/api/1&quot;&quot;&quot;</span>
+<span class="sd">        https://api.mongolab.com/api/1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">validators</span><span class="o">.</span><span class="n">check_api_key</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">BadAPIKeyFormat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">)</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_response</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">VAL_API</span><span class="p">)</span>
@@ -114,16 +110,21 @@
 </div>
     <span class="nd">@property</span>
 <div class="viewcode-block" id="MongoLabClient.proxy_handler"><a class="viewcode-back" href="../../mongolabclient/client.html#mongolabclient.client.MongoLabClient.proxy_handler">[docs]</a>    <span class="k">def</span> <span class="nf">proxy_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Instance of :class:`urllib2.ProxyHandler` to using on all of HTTP</span>
+<span class="sd">        requests.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__proxy_handler</span>
 </div>
     <span class="k">def</span> <span class="nf">__get_full_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operation</span><span class="p">,</span> <span class="n">slug_params</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns full url of the operation selected with the slug parameters</span>
-<span class="sd">        included.&quot;&quot;&quot;</span>
+<span class="sd">        included.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">operation</span><span class="p">[</span><span class="s">&quot;slug&quot;</span><span class="p">])</span> <span class="o">%</span> <span class="n">slug_params</span>
 
     <span class="k">def</span> <span class="nf">__get_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operation</span><span class="p">,</span> <span class="n">slug_params</span><span class="o">=</span><span class="p">{},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns response of HTTP request depending the operation selected.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Returns response of HTTP request depending the operation</span>
+<span class="sd">        selected.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">operation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">operations</span><span class="p">[</span><span class="n">operation</span><span class="p">]</span>
         <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_full_url</span><span class="p">(</span><span class="n">operation</span><span class="p">,</span> <span class="n">slug_params</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">operation</span><span class="p">[</span><span class="s">&quot;method&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;GET&quot;</span><span class="p">:</span>
@@ -133,7 +134,7 @@
         <span class="k">elif</span> <span class="n">operation</span><span class="p">[</span><span class="s">&quot;method&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
             <span class="n">params</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;data&quot;</span><span class="p">,</span> <span class="p">{})</span>
             <span class="n">req</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="s">&quot;?apiKey=</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">)</span>
-            <span class="n">req</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+            <span class="n">req</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__content_type</span><span class="p">)</span>
             <span class="n">req</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">json_util</span><span class="o">.</span><span class="n">default</span><span class="p">))</span>
         <span class="k">elif</span> <span class="n">operation</span><span class="p">[</span><span class="s">&quot;method&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&quot;PUT&quot;</span><span class="p">:</span>
             <span class="n">params</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&quot;data&quot;</span><span class="p">]</span>
@@ -141,7 +142,7 @@
             <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&quot;data&quot;</span><span class="p">]</span>
             <span class="n">qs</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="n">req</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span> <span class="o">+</span> <span class="s">&quot;?</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">qs</span><span class="p">)</span>
-            <span class="n">req</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+            <span class="n">req</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__content_type</span><span class="p">)</span>
             <span class="n">req</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">json_util</span><span class="o">.</span><span class="n">default</span><span class="p">))</span>
             <span class="n">req</span><span class="o">.</span><span class="n">get_method</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">operation</span><span class="p">[</span><span class="s">&quot;method&quot;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
@@ -164,7 +165,8 @@
 
 <span class="sd">        .. code-block:: bash</span>
 
-<span class="sd">           GET /databases&quot;&quot;&quot;</span>
+<span class="sd">           GET /databases</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_response</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">LST_DBS</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">r</span><span class="p">[</span><span class="s">&quot;result&quot;</span><span class="p">]</span>
@@ -187,7 +189,8 @@
 
 <span class="sd">        .. code-block:: bash</span>
 
-<span class="sd">           GET /databases/{database}/collections/{collection}&quot;&quot;&quot;</span>
+<span class="sd">           GET /databases/{database}/collections/{collection}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="n">validators</span><span class="o">.</span><span class="n">check_list_documents_params</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_response</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">LST_DOCS</span><span class="p">,</span>
             <span class="p">{</span><span class="s">&quot;db&quot;</span><span class="p">:</span> <span class="n">database</span><span class="p">,</span> <span class="s">&quot;col&quot;</span><span class="p">:</span> <span class="n">collection</span><span class="p">},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -200,7 +203,8 @@
 
 <span class="sd">        .. code-block:: bash</span>
 
-<span class="sd">           POST /databases/{database}/collections/{collection}&quot;&quot;&quot;</span>
+<span class="sd">           POST /databases/{database}/collections/{collection}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">validators</span><span class="o">.</span><span class="n">check_documents_to_insert</span><span class="p">(</span><span class="n">doc_or_docs</span><span class="p">)</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_response</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">INS_DOCS</span><span class="p">,</span>
             <span class="p">{</span><span class="s">&quot;db&quot;</span><span class="p">:</span> <span class="n">database</span><span class="p">,</span> <span class="s">&quot;col&quot;</span><span class="p">:</span> <span class="n">collection</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">doc_or_docs</span><span class="p">)</span>
@@ -215,7 +219,8 @@
 
 <span class="sd">        .. code-block:: bash</span>
 
-<span class="sd">           PUT /databases/{database}/collections/{collection}&quot;&quot;&quot;</span>
+<span class="sd">           PUT /databases/{database}/collections/{collection}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">validators</span><span class="o">.</span><span class="n">check_document_to_update</span><span class="p">(</span><span class="n">doc_or_docs</span><span class="p">)</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_response</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">UPD_DOCS</span><span class="p">,</span>
             <span class="p">{</span><span class="s">&quot;db&quot;</span><span class="p">:</span> <span class="n">database</span><span class="p">,</span> <span class="s">&quot;col&quot;</span><span class="p">:</span> <span class="n">collection</span><span class="p">},</span>
@@ -232,7 +237,8 @@
 
 <span class="sd">        .. code-block:: bash</span>
 
-<span class="sd">           PUT /databases/{database}/collections/{collection}&quot;&quot;&quot;</span>
+<span class="sd">           PUT /databases/{database}/collections/{collection}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_response</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">DEL_REP_DOCS</span><span class="p">,</span>
             <span class="p">{</span><span class="s">&quot;db&quot;</span><span class="p">:</span> <span class="n">database</span><span class="p">,</span> <span class="s">&quot;col&quot;</span><span class="p">:</span> <span class="n">collection</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="n">documents</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="n">spec</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
@@ -244,7 +250,8 @@
 
 <span class="sd">        .. code-block:: bash</span>
 
-<span class="sd">           GET /databases/{database}/collections/{collection}/{_id}&quot;&quot;&quot;</span>
+<span class="sd">           GET /databases/{database}/collections/{collection}/{_id}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_response</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">VIW_DOC</span><span class="p">,</span>
             <span class="p">{</span><span class="s">&quot;db&quot;</span><span class="p">:</span> <span class="n">database</span><span class="p">,</span> <span class="s">&quot;col&quot;</span><span class="p">:</span> <span class="n">collection</span><span class="p">,</span> <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">_id</span><span class="p">)})</span>
         <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
@@ -257,7 +264,8 @@
 
 <span class="sd">        .. code-block:: bash</span>
 
-<span class="sd">           PUT /databases/{database}/collections/{collection}/{_id}&quot;&quot;&quot;</span>
+<span class="sd">           PUT /databases/{database}/collections/{collection}/{_id}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_response</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">UPD_DOC</span><span class="p">,</span>
             <span class="p">{</span><span class="s">&quot;db&quot;</span><span class="p">:</span> <span class="n">database</span><span class="p">,</span> <span class="s">&quot;col&quot;</span><span class="p">:</span> <span class="n">collection</span><span class="p">,</span> <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">_id</span><span class="p">)},</span>
             <span class="n">data</span><span class="o">=</span><span class="n">document</span><span class="p">)</span>
@@ -271,7 +279,8 @@
 
 <span class="sd">        .. code-block:: bash</span>
 
-<span class="sd">           DELETE /databases/{database}/collections/{collection}/{_id}&quot;&quot;&quot;</span>
+<span class="sd">           DELETE /databases/{database}/collections/{collection}/{_id}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_response</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">DEL_DOC</span><span class="p">,</span>
             <span class="p">{</span><span class="s">&quot;db&quot;</span><span class="p">:</span> <span class="n">database</span><span class="p">,</span> <span class="s">&quot;col&quot;</span><span class="p">:</span> <span class="n">collection</span><span class="p">,</span> <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">_id</span><span class="p">)})</span>
         <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
@@ -283,7 +292,8 @@
 
 <span class="sd">        .. code-block:: bash</span>
 
-<span class="sd">           POST /databases/{database}/runCommand&quot;&quot;&quot;</span>
+<span class="sd">           POST /databases/{database}/runCommand</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_response</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">RUN_DB_COL_LVL_CMD</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;db&quot;</span><span class="p">:</span> <span class="n">database</span><span class="p">},</span>
             <span class="n">data</span><span class="o">=</span><span class="n">command</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s">&quot;status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
@@ -294,7 +304,6 @@
           </div>
         </div>
       </div>
-
         </div>
         <div class="sidebar">
           <h3>Table Of Contents</h3>
@@ -318,7 +327,6 @@
       </div>
     </div>
 
-
     <div class="footer-wrapper">
       <div class="footer">
         <div class="left">
@@ -337,17 +345,6 @@
         <div class="clearer"></div>
       </div>
     </div>
-
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-20969608-2']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
 
   </body>
 </html>

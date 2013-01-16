@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>database – Database level operations &mdash; PyMongoLab 1.0rc1 documentation</title>
+    <title>database – Database level operations &mdash; PyMongoLab 1.1 documentation</title>
     
     <link rel="stylesheet" href="../static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.0rc1',
+        VERSION:     '1.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,18 +26,18 @@
     <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PyMongoLab 1.0rc1 documentation" href="../index.html" />
+    <link rel="top" title="PyMongoLab 1.1 documentation" href="../index.html" />
     <link rel="up" title="PyMongoLab" href="index.html" />
     <link rel="next" title="collection – Collection level utilities for MongoLab" href="collection.html" />
-    <link rel="prev" title="connection – Connecting to MongoLab" href="connection.html" /> 
+    <link rel="prev" title="connection – Connecting to MongoLab – DEPRECATED" href="connection.html" /> 
   </head>
   <body>
     <div class="header-wrapper">
       <div class="header">
         <div class="headertitle"><a
-          href="../index.html">PyMongoLab 1.0rc1 documentation</a></div>
+          href="../index.html">PyMongoLab 1.1 documentation</a></div>
         <div class="rel">
-          <a href="connection.html" title="connection – Connecting to MongoLab"
+          <a href="connection.html" title="connection – Connecting to MongoLab – DEPRECATED"
              accesskey="P">previous</a> |
           <a href="collection.html" title="collection – Collection level utilities for MongoLab"
              accesskey="N">next</a> |
@@ -52,12 +52,6 @@
     <div class="content-wrapper">
       <div class="content">
         <div class="document">
-<a href="https://github.com/puentesarrin/pymongolab">
-    <img style="position: absolute; top: 0; right: 0; border: 0;"
-    src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"
-    alt="Fork me on GitHub">
-</a>
-
             
       <div class="documentwrapper">
         <div class="bodywrapper">
@@ -70,26 +64,26 @@
 <em class="property">class </em><tt class="descclassname">pymongolab.database.</tt><tt class="descname">Database</tt><big>(</big><em>connection</em>, <em>name</em><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>For instance this class, you needs an instance of
-<a class="reference internal" href="connection.html#pymongolab.connection.Connection" title="pymongolab.connection.Connection"><tt class="xref py py-class docutils literal"><span class="pre">pymongolab.connection.Connection</span></tt></a> and the name of your database.</p>
+<a class="reference internal" href="mongo_client.html#pymongolab.mongo_client.MongoClient" title="pymongolab.mongo_client.MongoClient"><tt class="xref py py-class docutils literal"><span class="pre">pymongolab.mongo_client.MongoClient</span></tt></a> and the name of your database.</p>
 <p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">database</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">MongoClient</span><span class="p">,</span> <span class="n">database</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">database</span><span class="o">.</span><span class="n">Database</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="s">&quot;database&quot;</span><span class="p">)</span>
-<span class="go">Database(Connection(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;), &#39;database&#39;)</span>
+<span class="go">Database(MongoClient(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;), &#39;database&#39;)</span>
 </pre></div>
 </div>
 <p>Easy usage (Attibute-style access):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="o">.</span><span class="n">database</span>
-<span class="go">Database(Connection(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;), &#39;database&#39;)</span>
+<span class="go">Database(MongoClient(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;), &#39;database&#39;)</span>
 </pre></div>
 </div>
 <p>Easy usage (Dictionary-style access):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="p">[</span><span class="s">&quot;database&quot;</span><span class="p">]</span>
-<span class="go">Database(Connection(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;), &#39;database&#39;)</span>
+<span class="go">Database(MongoClient(&#39;MongoLabAPIKey&#39;, &#39;v1&#39;), &#39;database&#39;)</span>
 </pre></div>
 </div>
 <dl class="method">
@@ -97,8 +91,8 @@
 <tt class="descname">collection_names</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.collection_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.collection_names" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list with the collection names of your database.</p>
 <p>Example usage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">Connection</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">collection_names</span><span class="p">()</span>
 <span class="go">[u&#39;collection&#39;, u&#39;users&#39;, u&#39;issues&#39;]</span>
 </pre></div>
@@ -107,16 +101,158 @@
 
 <dl class="method">
 <dt id="pymongolab.database.Database.command">
-<tt class="descname">command</tt><big>(</big><em>command</em><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.command" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">command</tt><big>(</big><em>command</em>, <em>value=1</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute a database-collection level command via
-<a class="reference internal" href="../mongolabclient/client.html#mongolabclient.client.MongoLabClient.run_command" title="mongolabclient.client.MongoLabClient.run_command"><tt class="xref py py-func docutils literal"><span class="pre">mongolabclient.client.MongoLabClient.run_command()</span></tt></a>.</p>
+<a class="reference internal" href="../mongolabclient/client.html#mongolabclient.client.MongoLabClient.run_command" title="mongolabclient.client.MongoLabClient.run_command"><tt class="xref py py-func docutils literal"><span class="pre">mongolabclient.client.MongoLabClient.run_command()</span></tt></a>. The supported
+methods are listed on MongoLab REST API Documentation:
+<a class="reference external" href="https://support.mongolab.com/entries/20433053-rest-api-for-mongodb">https://support.mongolab.com/entries/20433053-rest-api-for-mongodb</a></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">all of commands on MongoLab REST API are case-sensitive.</p>
+</div>
+<p>Example usage:</p>
+<p>A command like <tt class="docutils literal"><span class="pre">{dbstats:</span> <span class="pre">1}</span></tt> can be sent using:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s">&quot;dbStats&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For a command where the value matters, like <tt class="docutils literal"><span class="pre">{collstats:</span>
+<span class="pre">collection_name}</span></tt> we can do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s">&quot;collStats&quot;</span><span class="p">,</span> <span class="n">collection_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Full example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s">&quot;dbStats&quot;</span><span class="p">)</span>
+<span class="go">{u&#39;storageSize&#39;: 57344, u&#39;serverUsed&#39;: u&#39;dsXXXXXX-b.mongolab.com&#39;,</span>
+<span class="go">u&#39;ok&#39;: 1.0, u&#39;avgObjSize&#39;: 101.88235294117646, u&#39;db&#39;: u&#39;dbname&#39;,</span>
+<span class="go">u&#39;indexes&#39;: 7, u&#39;objects&#39;: 34, u&#39;collections&#39;: 9,</span>
+<span class="go">u&#39;fileSize&#39;: 16777216, u&#39;numExtents&#39;: 9, u&#39;dataSize&#39;: 3464,</span>
+<span class="go">u&#39;indexSize&#39;: 57232, u&#39;nsSizeMB&#39;: 16}</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s">&quot;collStats&quot;</span><span class="p">,</span> <span class="s">&quot;collectionname&quot;</span><span class="p">)</span>
+<span class="go">{u&#39;count&#39;: 7, u&#39;ns&#39;: u&#39;dbname.collectionname&#39;,</span>
+<span class="go">u&#39;serverUsed&#39;: u&#39;dsXXXXXX-b.mongolab.com&#39;, u&#39;lastExtentSize&#39;: 8192,</span>
+<span class="go">u&#39;avgObjSize&#39;: 258.85714285714283, u&#39;totalIndexSize&#39;: 8176,</span>
+<span class="go">u&#39;systemFlags&#39;: 1, u&#39;ok&#39;: 1.0, u&#39;userFlags&#39;: 0, u&#39;numExtents&#39;: 1,</span>
+<span class="go">u&#39;nindexes&#39;: 1, u&#39;storageSize&#39;: 8192,</span>
+<span class="go">u&#39;indexSizes&#39;: {u&#39;_id_&#39;: 8176},</span>
+<span class="go">u&#39;paddingFactor&#39;: 1.0020000000000007, u&#39;size&#39;: 1812}</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="pymongolab.database.Database.connection">
 <tt class="descname">connection</tt><a class="reference internal" href="../modules/pymongolab/database.html#Database.connection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.connection" title="Permalink to this definition">¶</a></dt>
-<dd><p>An instance of <a class="reference internal" href="connection.html#pymongolab.connection.Connection" title="pymongolab.connection.Connection"><tt class="xref py py-class docutils literal"><span class="pre">pymongolab.connection.Connection</span></tt></a> used for
+<dd><p>An instance of <a class="reference internal" href="mongo_client.html#pymongolab.mongo_client.MongoClient" title="pymongolab.mongo_client.MongoClient"><tt class="xref py py-class docutils literal"><span class="pre">pymongolab.mongo_client.MongoClient</span></tt></a> used for
 internal calls to MongoLab REST API via <a class="reference internal" href="../mongolabclient/index.html#module-mongolabclient" title="mongolabclient: HTTP requests implementation for MongoLab REST API"><tt class="xref py py-mod docutils literal"><span class="pre">mongolabclient</span></tt></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pymongolab.database.Database.error">
+<tt class="descname">error</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a database error if one occured on the last operation.</p>
+<p>Return None if the last operation was error-free. Otherwise return the
+error that occurred.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.2.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pymongolab.database.Database.last_status">
+<tt class="descname">last_status</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.last_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.last_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get status information from the last operation.</p>
+<p>Returns a dict with status information.</p>
+<p>Example usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pymongolab</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="s">&quot;MongoLabAPIKey&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="o">.</span><span class="n">database</span><span class="o">.</span><span class="n">last_status</span><span class="p">()</span>
+<span class="go">{&#39;ok&#39;: 1.0, &#39;err&#39;: None, &#39;connectionId&#39;: 951470, &#39;n&#39;: 0}</span>
+</pre></div>
+</div>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.2.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pymongolab.database.Database.previous_error">
+<tt class="descname">previous_error</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.previous_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.previous_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the most recent error to have occurred on this database.</p>
+<p>Only returns errors that have occurred since the last call to
+<cite>Database.reset_error_history</cite>. Returns None if no such errors have
+occurred.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.2.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pymongolab.database.Database.profiling_level">
+<tt class="descname">profiling_level</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.profiling_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.profiling_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the database&#8217;s current profiling level.</p>
+<p>Returns one of (<a class="reference internal" href="index.html#pymongolab.OFF" title="pymongolab.OFF"><tt class="xref py py-data docutils literal"><span class="pre">OFF</span></tt></a>,
+<a class="reference internal" href="index.html#pymongolab.SLOW_ONLY" title="pymongolab.SLOW_ONLY"><tt class="xref py py-data docutils literal"><span class="pre">SLOW_ONLY</span></tt></a>, <a class="reference internal" href="index.html#pymongolab.ALL" title="pymongolab.ALL"><tt class="xref py py-data docutils literal"><span class="pre">ALL</span></tt></a>).</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.2.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pymongolab.database.Database.reset_error_history">
+<tt class="descname">reset_error_history</tt><big>(</big><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.reset_error_history"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.reset_error_history" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the error history of this database.</p>
+<p>Calls to <cite>Database.previous_error</cite> will only return errors that have
+occurred since the most recent call to this method.</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.2.</span></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pymongolab.database.Database.set_profiling_level">
+<tt class="descname">set_profiling_level</tt><big>(</big><em>level</em>, <em>slow_ms=None</em><big>)</big><a class="reference internal" href="../modules/pymongolab/database.html#Database.set_profiling_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pymongolab.database.Database.set_profiling_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the database&#8217;s profiling level.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><ul class="first last simple">
+<li><cite>level</cite>: Specifies a profiling level, see list of possible values
+below.</li>
+<li><cite>slow_ms</cite>: Optionally modify the threshold for the profile to
+consider a query or operation.  Even if the profiler is off queries
+slower than the <cite>slow_ms</cite> level will get written to the logs.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Possible <cite>level</cite> values:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Level</th>
+<th class="head">Setting</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="index.html#pymongolab.OFF" title="pymongolab.OFF"><tt class="xref py py-data docutils literal"><span class="pre">OFF</span></tt></a></td>
+<td>Off. No profiling.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="index.html#pymongolab.SLOW_ONLY" title="pymongolab.SLOW_ONLY"><tt class="xref py py-data docutils literal"><span class="pre">SLOW_ONLY</span></tt></a></td>
+<td>On. Only includes slow operations.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="index.html#pymongolab.ALL" title="pymongolab.ALL"><tt class="xref py py-data docutils literal"><span class="pre">ALL</span></tt></a></td>
+<td>On. Includes all operations.</td>
+</tr>
+</tbody>
+</table>
+<p>Raises <tt class="xref py py-class docutils literal"><span class="pre">ValueError</span></tt> if level is not one of
+(<a class="reference internal" href="index.html#pymongolab.OFF" title="pymongolab.OFF"><tt class="xref py py-data docutils literal"><span class="pre">OFF</span></tt></a>, <a class="reference internal" href="index.html#pymongolab.SLOW_ONLY" title="pymongolab.SLOW_ONLY"><tt class="xref py py-data docutils literal"><span class="pre">SLOW_ONLY</span></tt></a>,
+<a class="reference internal" href="index.html#pymongolab.ALL" title="pymongolab.ALL"><tt class="xref py py-data docutils literal"><span class="pre">ALL</span></tt></a>).</p>
+<p class="versionadded">
+<span class="versionmodified">New in version 1.2.</span></p>
 </dd></dl>
 
 </dd></dl>
@@ -127,7 +263,6 @@ internal calls to MongoLab REST API via <a class="reference internal" href="../m
           </div>
         </div>
       </div>
-
         </div>
         <div class="sidebar">
           <h3>Table Of Contents</h3>
@@ -136,7 +271,8 @@ internal calls to MongoLab REST API via <a class="reference internal" href="../m
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">Packages</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../mongolabclient/index.html">MongoLabClient</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">PyMongoLab</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="connection.html"><tt class="docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mongo_client.html"><tt class="docutils literal"><span class="pre">mongo_client</span></tt> &#8211; Connecting to MongoLab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="connection.html"><tt class="docutils literal"><span class="pre">connection</span></tt> &#8211; Connecting to MongoLab &#8211; DEPRECATED</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href=""><tt class="docutils literal"><span class="pre">database</span></tt> &#8211; Database level operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="collection.html"><tt class="docutils literal"><span class="pre">collection</span></tt> &#8211; Collection level utilities for MongoLab</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cursor.html"><tt class="docutils literal"><span class="pre">cursor</span></tt> &#8211; Cursor class to iterate over MongoLab query results</a></li>
@@ -161,11 +297,10 @@ internal calls to MongoLab REST API via <a class="reference internal" href="../m
       </div>
     </div>
 
-
     <div class="footer-wrapper">
       <div class="footer">
         <div class="left">
-          <a href="connection.html" title="connection – Connecting to MongoLab"
+          <a href="connection.html" title="connection – Connecting to MongoLab – DEPRECATED"
              >previous</a> |
           <a href="collection.html" title="collection – Collection level utilities for MongoLab"
              >next</a> |
@@ -187,17 +322,6 @@ internal calls to MongoLab REST API via <a class="reference internal" href="../m
         <div class="clearer"></div>
       </div>
     </div>
-
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-20969608-2']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
 
   </body>
 </html>

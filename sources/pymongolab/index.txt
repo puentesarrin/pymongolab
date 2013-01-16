@@ -13,6 +13,7 @@ Sub-modules:
 .. toctree::
    :maxdepth: 2
 
+   mongo_client
    connection
    database
    collection
