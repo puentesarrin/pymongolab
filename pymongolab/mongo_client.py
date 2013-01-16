@@ -29,7 +29,7 @@ class MongoClient(object):
        >>> from pymongolab import MongoClient
        >>> MongoClient("MongoLabAPIKey", proxy_url="https://127.0.0.1:8000")
        MongoClient('MongoLabAPIKey', 'v1')
-   """
+    """
 
     def __init__(self, api_key, version="v1", proxy_url=None):
         self.api_key = api_key

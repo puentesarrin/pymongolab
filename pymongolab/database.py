@@ -4,7 +4,7 @@ from pymongolab import collection
 
 class Database(object):
     """For instance this class, you needs an instance of
-    :class:`pymongolab.connection.MongoClient` and the name of your database.
+    :class:`pymongolab.mongo_client.MongoClient` and the name of your database.
 
     Example usage:
 
@@ -40,7 +40,7 @@ class Database(object):
 
     @property
     def connection(self):
-        """An instance of :class:`pymongolab.connection.MongoClient` used for
+        """An instance of :class:`pymongolab.mongo_client.MongoClient` used for
         internal calls to MongoLab REST API via :mod:`mongolabclient`.
         """
         return self.__connection
@@ -176,10 +176,10 @@ class Database(object):
 
         .. code-block:: python
 
-        >>> from pymongolab import MongoClient
-        >>> con = MongoClient("MongoLabAPIKey")
-        >>> con.database.last_status()
-        {'ok': 1.0, 'err': None, 'connectionId': 951470, 'n': 0}
+           >>> from pymongolab import MongoClient
+           >>> con = MongoClient("MongoLabAPIKey")
+           >>> con.database.last_status()
+           {'ok': 1.0, 'err': None, 'connectionId': 951470, 'n': 0}
 
         .. versionadded:: 1.2
         """

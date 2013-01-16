@@ -226,19 +226,19 @@ class Collection(object):
         """Rebuilds all indexes on this collection.
 
         .. warning:: reindex blocks all other operations (indexes
-        are built in the foreground) and will be slow for large
-        collections.
+           are built in the foreground) and will be slow for large
+           collections.
 
         Example usage:
 
         .. code-block:: python
 
-        >>> from pymongolab import MongoClient
-        >>> con = MongoClient("MongoLabAPIKey")
-        >>> con.database.collection.reindex()
-        {u'ok': 1.0, u'indexes': [{u'ns': u'mydb.mycoll', u'name': u'_id_',
-        u'key': {u'_id': 1}}], u'msg': u'indexes dropped for collection',
-        u'nIndexes': 1, u'nIndexesWas': 1.0}
+           >>> from pymongolab import MongoClient
+           >>> con = MongoClient("MongoLabAPIKey")
+           >>> con.database.collection.reindex()
+           {u'ok': 1.0, u'indexes': [{u'ns': u'mydb.mycoll', u'name': u'_id_',
+           u'key': {u'_id': 1}}], u'msg': u'indexes dropped for collection',
+           u'nIndexes': 1, u'nIndexesWas': 1.0}
 
         .. versionadded:: 1.2
         """

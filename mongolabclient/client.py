@@ -40,7 +40,8 @@ class MongoLabClient(object):
 
     def __validate_api_key(self):
         """Validate API Key format and make a GET request to REST API base url:
-        https://api.mongolab.com/api/1"""
+        https://api.mongolab.com/api/1
+        """
         if not validators.check_api_key(self.api_key):
             raise errors.BadAPIKeyFormat(self.api_key)
         r = self.__get_response(settings.VAL_API)
@@ -55,17 +56,21 @@ class MongoLabClient(object):
 
     @property
     def proxy_handler(self):
-        """"""
+        """Instance of :class:`urllib2.ProxyHandler` to using on all of HTTP
+        requests.
+        """
         return self.__proxy_handler
 
     def __get_full_url(self, operation, slug_params):
         """Returns full url of the operation selected with the slug parameters
-        included."""
+        included.
+        """
         return (self.base_url + operation["slug"]) % slug_params
 
     def __get_response(self, operation, slug_params={}, **kwargs):
         """Returns response of HTTP request depending the operation
-        selected."""
+        selected.
+        """
         operation = self.settings.operations[operation]
         url = self.__get_full_url(operation, slug_params)
         if operation["method"] == "GET":
@@ -106,7 +111,8 @@ class MongoLabClient(object):
 
         .. code-block:: bash
 
-           GET /databases"""
+           GET /databases
+        """
         r = self.__get_response(settings.LST_DBS)
         if r["status"] == 200:
             return r["result"]
@@ -129,7 +135,8 @@ class MongoLabClient(object):
 
         .. code-block:: bash
 
-           GET /databases/{database}/collections/{collection}"""
+           GET /databases/{database}/collections/{collection}
+        """
         kwargs = validators.check_list_documents_params(**kwargs)
         r = self.__get_response(settings.LST_DOCS,
             {"db": database, "col": collection}, **kwargs)
@@ -142,7 +149,8 @@ class MongoLabClient(object):
 
         .. code-block:: bash
 
-           POST /databases/{database}/collections/{collection}"""
+           POST /databases/{database}/collections/{collection}
+        """
         validators.check_documents_to_insert(doc_or_docs)
         r = self.__get_response(settings.INS_DOCS,
             {"db": database, "col": collection}, data=doc_or_docs)
@@ -157,7 +165,8 @@ class MongoLabClient(object):
 
         .. code-block:: bash
 
-           PUT /databases/{database}/collections/{collection}"""
+           PUT /databases/{database}/collections/{collection}
+        """
         validators.check_document_to_update(doc_or_docs)
         r = self.__get_response(settings.UPD_DOCS,
             {"db": database, "col": collection},
@@ -174,7 +183,8 @@ class MongoLabClient(object):
 
         .. code-block:: bash
 
-           PUT /databases/{database}/collections/{collection}"""
+           PUT /databases/{database}/collections/{collection}
+        """
         r = self.__get_response(settings.DEL_REP_DOCS,
             {"db": database, "col": collection}, data=documents, q=spec)
         if r["status"] == 200:
@@ -186,7 +196,8 @@ class MongoLabClient(object):
 
         .. code-block:: bash
 
-           GET /databases/{database}/collections/{collection}/{_id}"""
+           GET /databases/{database}/collections/{collection}/{_id}
+        """
         r = self.__get_response(settings.VIW_DOC,
             {"db": database, "col": collection, "id": str(_id)})
         if r["status"] == 200:
@@ -199,7 +210,8 @@ class MongoLabClient(object):
 
         .. code-block:: bash
 
-           PUT /databases/{database}/collections/{collection}/{_id}"""
+           PUT /databases/{database}/collections/{collection}/{_id}
+        """
         r = self.__get_response(settings.UPD_DOC,
             {"db": database, "col": collection, "id": str(_id)},
             data=document)
@@ -213,7 +225,8 @@ class MongoLabClient(object):
 
         .. code-block:: bash
 
-           DELETE /databases/{database}/collections/{collection}/{_id}"""
+           DELETE /databases/{database}/collections/{collection}/{_id}
+        """
         r = self.__get_response(settings.DEL_DOC,
             {"db": database, "col": collection, "id": str(_id)})
         if r["status"] == 200:
@@ -225,7 +238,8 @@ class MongoLabClient(object):
 
         .. code-block:: bash
 
-           POST /databases/{database}/runCommand"""
+           POST /databases/{database}/runCommand
+        """
         r = self.__get_response(settings.RUN_DB_COL_LVL_CMD, {"db": database},
             data=command)
         if r["status"] == 200:
