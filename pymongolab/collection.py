@@ -44,6 +44,7 @@ class Collection(object):
     def __init__(self, database, name):
         self.__database = database
         self.name = name
+        self.__full_name = u"%s.%s" % (self.__database.name, self.name)
 
     @property
     def database(self):
@@ -51,6 +52,14 @@ class Collection(object):
         internal calls to MongoLab REST API via :mod:`mongolabclient`.
         """
         return self.__database
+
+    @property
+    def full_name(self):
+        """The full name of this :class:`pymongolab.collection.Collection`.
+
+        The full name is of the form `database_name.collection_name`.
+        """
+        return self.__full_name
 
     def __eq__(self, other):
         if isinstance(other, Collection):
@@ -61,6 +70,12 @@ class Collection(object):
 
     def __repr__(self):
         return "Collection(%r, %r)" % (self.database, self.name)
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        raise TypeError("'Collection' object is not iterable")
 
     def find(self, spec_or_id=None, fields={}, skip=0, limit=0, **kwargs):
         """Query the database.
