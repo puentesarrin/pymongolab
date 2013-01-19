@@ -1,4 +1,5 @@
 # -*- coding: utf-8 *-*
+from collections import OrderedDict
 from pymongolab import collection
 
 
@@ -146,10 +147,13 @@ class Database(object):
            u'indexSizes': {u'_id_': 8176},
            u'paddingFactor': 1.0020000000000007, u'size': 1812}
         """
-        if isinstance(command, basestring):
-            command = {command: str(value)}
-        command.update(kwargs)
-        return self.connection.request.run_command(self.name, command)
+        cmd = OrderedDict()
+        if isinstance(command, dict):
+            cmd.update(command)
+        elif isinstance(command, basestring):
+            cmd[command] = str(value)
+        cmd.update(kwargs)
+        return self.connection.request.run_command(self.name, cmd)
 
     def error(self):
         """Get a database error if one occured on the last operation.

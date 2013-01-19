@@ -1,6 +1,7 @@
 # -*- coding: utf-8 *-*
-from pymongolab import cursor
 from bson.objectid import ObjectId
+from collections import OrderedDict
+from pymongolab import cursor, helpers
 
 
 class Collection(object):
@@ -112,6 +113,66 @@ class Collection(object):
                 self.database.name, self.name, spec_or_id)
         return cursor.Cursor(self, spec_or_id, fields, skip, limit, **kwargs)
 
+    def find_and_modify(self, query={}, update=None, upsert=False, sort=None,
+        **kwargs):
+        """Update and return an object.
+
+        This is a thin wrapper around the findAndModify_ command. The
+        positional arguments are designed to match the first three arguments
+        to :meth:`update` however most options should be passed as named
+        parameters. Either `update` or `remove` arguments are required, all
+        others are optional.
+
+        Returns either the object before or after modification based on `new`
+        parameter. If no objects match the `query` and `upsert` is false,
+        returns ``None``. If upserting and `new` is false, returns ``{}``.
+
+        :Parameters:
+        - `query`: filter for the update (default ``{}``)
+        - `update`: see second argument to :meth:`update` (no default)
+        - `upsert`: insert if object doesn't exist (default ``False``)
+        - `sort`: a list of (key, direction) pairs specifying the sort
+          order for this query. See :meth:`~pymongo.cursor.Cursor.sort`
+          for details.
+        - `remove`: remove rather than updating (default ``False``)
+        - `new`: return updated rather than original object
+          (default ``False``)
+        - `fields`: see second argument to :meth:`find` (default all)
+        - `**kwargs`: any other options the findAndModify_ command
+          supports can be passed here.
+
+        .. _findAndModify: http://dochub.mongodb.org/core/findAndModify
+
+        .. versionadded:: 1.2
+        """
+        if (not update and not kwargs.get('remove', None)):
+            raise ValueError("Must either update or remove")
+        if (update and kwargs.get('remove', None)):
+            raise ValueError("Can't do both update and remove")
+        if query:
+            kwargs['query'] = query
+        if update:
+            kwargs['update'] = update
+        if upsert:
+            kwargs['upsert'] = upsert
+        if sort:
+            if isinstance(sort, list):
+                kwargs['sort'] = helpers._index_document(sort)
+            elif (isinstance(sort, OrderedDict) or isinstance(sort, dict) and
+                 len(sort) == 1):
+                kwargs['sort'] = sort
+            else:
+                raise TypeError("sort must be a list of (key, direction) "
+                                "pairs, a dict of len 1, or an instance of "
+                                "OrderedDict")
+        out = self.database.command("findAndModify", self.name, **kwargs)
+        if not out['ok']:
+            if out["errmsg"] == "No matching object found":
+                return None
+            else:
+                raise ValueError("Unexpected Error: %s" % (out,))
+        return out.get('value')
+
     def find_one(self, spec_or_id=None, **kwargs):
         """Query the database.
 
@@ -177,7 +238,7 @@ class Collection(object):
         .. versionadded:: 1.2
         """
         return self.database.command({'distinct': self.name,
-        'key': key})['values']
+                                      'key': key})['values']
 
     def insert(self, doc_or_docs):
         """Insert a document or documents into this collection.
