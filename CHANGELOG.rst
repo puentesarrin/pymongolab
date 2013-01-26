@@ -1,8 +1,8 @@
 CHANGELOG
 =========
 
-1.2 (No scheduled)
-------------------
+1.2 (2013-01-26)
+----------------
 
 * Fixed and improved ``command`` method from ``Database`` class using
   ``OrderedDict``.
