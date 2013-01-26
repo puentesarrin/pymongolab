@@ -128,18 +128,18 @@ class Collection(object):
         returns ``None``. If upserting and `new` is false, returns ``{}``.
 
         :Parameters:
-        - `query`: filter for the update (default ``{}``)
-        - `update`: see second argument to :meth:`update` (no default)
-        - `upsert`: insert if object doesn't exist (default ``False``)
-        - `sort`: a list of (key, direction) pairs specifying the sort
-          order for this query. See :meth:`~pymongo.cursor.Cursor.sort`
-          for details.
-        - `remove`: remove rather than updating (default ``False``)
-        - `new`: return updated rather than original object
-          (default ``False``)
-        - `fields`: see second argument to :meth:`find` (default all)
-        - `**kwargs`: any other options the findAndModify_ command
-          supports can be passed here.
+            - `query`: filter for the update (default ``{}``)
+            - `update`: see second argument to :meth:`update` (no default)
+            - `upsert`: insert if object doesn't exist (default ``False``)
+            - `sort`: a list of (key, direction) pairs specifying the sort
+              order for this query. See :meth:`~pymongo.cursor.Cursor.sort`
+              for details.
+            - `remove`: remove rather than updating (default ``False``)
+            - `new`: return updated rather than original object
+              (default ``False``)
+            - `fields`: see second argument to :meth:`find` (default all)
+            - `**kwargs`: any other options the findAndModify_ command
+              supports can be passed here.
 
         .. _findAndModify: http://dochub.mongodb.org/core/findAndModify
 
