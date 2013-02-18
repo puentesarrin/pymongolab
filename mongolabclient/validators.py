@@ -3,7 +3,7 @@ from mongolabclient import errors
 import re
 
 
-__api_key_re = re.compile(r"^[a-z0-9]{24}$")
+__api_key_re = re.compile(r"^[a-z0-9]{24}|[a-zA-Z0-9_-]{32}$")
 
 __param_types = {"spec": dict, "count": bool, "fields": dict, "find_one": bool,
     "sort": dict, "skip": int, "limit": int}
