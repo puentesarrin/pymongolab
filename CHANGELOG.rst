@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-1.2 (2013-01-26)
+1.2 (2013-02-19)
 ----------------
 
 * Fixed and improved ``command`` method from ``Database`` class using
@@ -13,6 +13,7 @@ CHANGELOG
   to ``Collection`` class.
 * Added ``helpers`` module.
 * Added UTF-8 support for REST API requests.
+* Support for new API key format.
 
 
 1.1 (2012-12-14)
