@@ -15,6 +15,5 @@ Sub-modules:
 
    client
    settings
-   json_util
    validators
    errors
