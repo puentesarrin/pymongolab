@@ -5,7 +5,9 @@ except ImportError:
     import json
 import urllib
 import urllib2
-from mongolabclient import settings, validators, errors, json_util
+
+from bson import json_util
+from mongolabclient import settings, validators, errors
 
 
 class MongoLabClient(object):
