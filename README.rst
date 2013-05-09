@@ -1,6 +1,15 @@
 ==========
 PyMongoLab
 ==========
+
+.. image:: https://pypip.in/v/pymongolab/badge.png
+    :target: https://pypi.python.org/pypi/pymongolab
+    :alt: Latest PyPI version
+
+.. image:: https://pypip.in/d/pymongolab/badge.png
+    :target: https://pypi.python.org/pypi/pymongolab
+    :alt: Number of PyPI downloads
+
 :Info: See `PyMongoLab documentation site`_ for more information. See `GitHub repository`_ for the latest source.
 :Author: Jorge Puente Sarrín <puentesarrin@gmail.com>
 
