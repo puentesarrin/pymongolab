@@ -21,13 +21,15 @@ MongoLab databases via the `MongoLab REST API`_ using a similar syntax to PyMong
 Useful in cases where network barriers (firewalls, etc.)  prevent use of the
 standard MongoDB driver.
 
->>> from pymongolab import MongoClient
->>> con = MongoClient("MongoLabAPIKey")
->>> db = con.database
->>> col = db.collection.find()
->>> list(col)
-[{u'_id': ObjectId('50243d38e4b00c3b3e75fc94'), u'foo': u'bar', u'tld': u'com'},
-{u'_id': ObjectId('50004d646cf431171ed53846'), u'foo': u'bar', u'tld': u'org'}]
+.. code-block:: pycon
+
+   >>> from pymongolab import MongoClient
+   >>> con = MongoClient("MongoLabAPIKey")
+   >>> db = con.database
+   >>> col = db.collection.find()
+   >>> list(col)
+   [{u'_id': ObjectId('50243d38e4b00c3b3e75fc94'), u'foo': u'bar', u'tld': u'com'},
+   {u'_id': ObjectId('50004d646cf431171ed53846'), u'foo': u'bar', u'tld': u'org'}]
 
 Installation
 ============
