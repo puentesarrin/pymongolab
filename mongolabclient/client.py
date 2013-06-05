@@ -67,7 +67,7 @@ class MongoLabClient(object):
         """Returns full url of the operation selected with the slug parameters
         included.
         """
-        return (self.base_url + operation["slug"]) % slug_params
+        return (self.base_url + operation[1]) % slug_params
 
     def __get_response(self, operation, slug_params={}, **kwargs):
         """Returns response of HTTP request depending the operation
@@ -75,16 +75,16 @@ class MongoLabClient(object):
         """
         operation = self.settings.operations[operation]
         url = self.__get_full_url(operation, slug_params)
-        if operation["method"] == "GET":
+        if operation[0] == "GET":
             kwargs["apiKey"] = self.api_key
             params = urllib.urlencode(kwargs)
             req = urllib2.Request(url + "?%s" % params)
-        elif operation["method"] == "POST":
+        elif operation[0] == "POST":
             params = kwargs.get("data", {})
             req = urllib2.Request(url + "?apiKey=%s" % self.api_key)
             req.add_header("Content-Type", self.__content_type)
             req.add_data(json.dumps(params, default=json_util.default))
-        elif operation["method"] == "PUT":
+        elif operation[0] == "PUT":
             params = kwargs["data"]
             kwargs["apiKey"] = self.api_key
             del kwargs["data"]
@@ -92,12 +92,12 @@ class MongoLabClient(object):
             req = urllib2.Request(url + "?%s" % qs)
             req.add_header("Content-Type", self.__content_type)
             req.add_data(json.dumps(params, default=json_util.default))
-            req.get_method = lambda: operation["method"]
+            req.get_method = lambda: operation[0]
         else:
             kwargs["apiKey"] = self.api_key
             params = urllib.urlencode(kwargs)
             req = urllib2.Request(url + "?%s" % params)
-            req.get_method = lambda: operation["method"]
+            req.get_method = lambda: operation[0]
         opener = urllib2.build_opener(self.proxy_handler)
         urllib2.install_opener(opener)
         try:

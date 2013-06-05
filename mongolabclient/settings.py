@@ -45,39 +45,17 @@ class MongoLabSettings(object):
 
     __OPERATIONS = {
         VERSION_1: {
-            VAL_API: {
-                "method": "GET",
-                "slug": ""},
-            LST_DBS: {
-                "method": "GET",
-                "slug": "databases"},
-            LST_COLS: {
-                "method": "GET",
-                "slug": "databases/%(db)s/collections"},
-            LST_DOCS: {
-                "method": "GET",
-                "slug": "databases/%(db)s/collections/%(col)s"},
-            INS_DOCS: {
-                "method": "POST",
-                "slug": "databases/%(db)s/collections/%(col)s"},
-            UPD_DOCS: {
-                "method": "PUT",
-                "slug": "databases/%(db)s/collections/%(col)s"},
-            DEL_REP_DOCS: {
-                "method": "PUT",
-                "slug": "databases/%(db)s/collections/%(col)s"},
-            VIW_DOC: {
-                "method": "GET",
-                "slug": "databases/%(db)s/collections/%(col)s/%(id)s"},
-            UPD_DOC: {
-                "method": "PUT",
-                "slug": "databases/%(db)s/collections/%(col)s/%(id)s"},
-            DEL_DOC: {
-                "method": "DELETE",
-                "slug": "databases/%(db)s/collections/%(col)s/%(id)s"},
-            RUN_DB_COL_LVL_CMD: {
-                "method": "POST",
-                "slug": "databases/%(db)s/runCommand"}
+            VAL_API: ("GET", ""),
+            LST_DBS: ("GET", "databases"),
+            LST_COLS: ("GET", "databases/%(db)s/collections"),
+            LST_DOCS: ("GET", "databases/%(db)s/collections/%(col)s"),
+            INS_DOCS: ("POST", "databases/%(db)s/collections/%(col)s"),
+            UPD_DOCS: ("PUT", "databases/%(db)s/collections/%(col)s"),
+            DEL_REP_DOCS: ("PUT", "databases/%(db)s/collections/%(col)s"),
+            VIW_DOC: ("GET", "databases/%(db)s/collections/%(col)s/%(id)s"),
+            UPD_DOC: ("PUT", "databases/%(db)s/collections/%(col)s/%(id)s"),
+            DEL_DOC: ("DELETE", "databases/%(db)s/collections/%(col)s/%(id)s"),
+            RUN_DB_COL_LVL_CMD: ("POST", "databases/%(db)s/runCommand")
             }
         }
 
