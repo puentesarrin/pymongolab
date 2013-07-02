@@ -45,17 +45,17 @@ class MongoLabSettings(object):
 
     __OPERATIONS = {
         VERSION_1: {
-            VAL_API: ("GET", ""),
-            LST_DBS: ("GET", "databases"),
-            LST_COLS: ("GET", "databases/%(db)s/collections"),
-            LST_DOCS: ("GET", "databases/%(db)s/collections/%(col)s"),
-            INS_DOCS: ("POST", "databases/%(db)s/collections/%(col)s"),
-            UPD_DOCS: ("PUT", "databases/%(db)s/collections/%(col)s"),
-            DEL_REP_DOCS: ("PUT", "databases/%(db)s/collections/%(col)s"),
-            VIW_DOC: ("GET", "databases/%(db)s/collections/%(col)s/%(id)s"),
-            UPD_DOC: ("PUT", "databases/%(db)s/collections/%(col)s/%(id)s"),
-            DEL_DOC: ("DELETE", "databases/%(db)s/collections/%(col)s/%(id)s"),
-            RUN_DB_COL_LVL_CMD: ("POST", "databases/%(db)s/runCommand")
+            VAL_API: ("get", ""),
+            LST_DBS: ("get", "databases"),
+            LST_COLS: ("get", "databases/%(db)s/collections"),
+            LST_DOCS: ("get", "databases/%(db)s/collections/%(col)s"),
+            INS_DOCS: ("post", "databases/%(db)s/collections/%(col)s"),
+            UPD_DOCS: ("put", "databases/%(db)s/collections/%(col)s"),
+            DEL_REP_DOCS: ("put", "databases/%(db)s/collections/%(col)s"),
+            VIW_DOC: ("get", "databases/%(db)s/collections/%(col)s/%(id)s"),
+            UPD_DOC: ("put", "databases/%(db)s/collections/%(col)s/%(id)s"),
+            DEL_DOC: ("delete", "databases/%(db)s/collections/%(col)s/%(id)s"),
+            RUN_DB_COL_LVL_CMD: ("post", "databases/%(db)s/runCommand")
             }
         }
 
