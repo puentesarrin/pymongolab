@@ -3,8 +3,7 @@ try:
     import simplejson as json
 except ImportError:
     import json
-import urllib
-import urllib2
+import requests
 
 from bson import json_util
 from mongolabclient import settings, validators, errors
@@ -27,16 +26,15 @@ class MongoLabClient(object):
        >>> from mongolabclient import MongoLabClient
        >>> MongoLabClient("MongoLabAPIKey", proxy_url="https://127.0.0.1:8000")
        MongoLabClient('MongoLabAPIKey', 'v1')
+
+    .. sds:: `proxy_handler` was deprecated on 1.3 version.
     """
 
     def __init__(self, api_key, version=settings.VERSION_1, proxy_url=None):
         self.api_key = api_key
         self.settings = settings.MongoLabSettings(version)
         self.__content_type = 'application/json;charset=utf-8'
-        if proxy_url:
-            self.__proxy_handler = urllib2.ProxyHandler({"https": proxy_url})
-        else:
-            self.__proxy_handler = urllib2.ProxyHandler()
+        self.__proxy_url = proxy_url
         if not self.__validate_api_key():
             raise errors.InvalidAPIKey(self.api_key)
 
@@ -57,11 +55,32 @@ class MongoLabClient(object):
         return self._base_url
 
     @property
+    def proxy_url(self):
+        """Proxy url to using on all of HTTP requests.
+
+        .. versionadded: 1.3
+        """
+        return self.__proxy_url
+
+    @property
+    def proxies(self):
+        if self.proxy_url:
+            return {'https': self.proxy_url}
+        return {}
+
+    @property
     def proxy_handler(self):
         """Instance of :class:`urllib2.ProxyHandler` to using on all of HTTP
         requests.
+
+        .. deprecated: 1.3
+
+           Use :attr:`proxies` instead.
         """
-        return self.__proxy_handler
+        import urllib2
+        if self.proxy_url:
+            return urllib2.ProxyHandler({"https": self.proxy_url})
+        return urllib2.ProxyHandler()
 
     def __get_full_url(self, operation, slug_params):
         """Returns full url of the operation selected with the slug parameters
@@ -75,38 +94,28 @@ class MongoLabClient(object):
         """
         operation = self.settings.operations[operation]
         url = self.__get_full_url(operation, slug_params)
-        if operation[0] == "GET":
-            kwargs["apiKey"] = self.api_key
-            params = urllib.urlencode(kwargs)
-            req = urllib2.Request(url + "?%s" % params)
-        elif operation[0] == "POST":
-            params = kwargs.get("data", {})
-            req = urllib2.Request(url + "?apiKey=%s" % self.api_key)
-            req.add_header("Content-Type", self.__content_type)
-            req.add_data(json.dumps(params, default=json_util.default))
-        elif operation[0] == "PUT":
-            params = kwargs["data"]
-            kwargs["apiKey"] = self.api_key
-            del kwargs["data"]
-            qs = urllib.urlencode(kwargs)
-            req = urllib2.Request(url + "?%s" % qs)
-            req.add_header("Content-Type", self.__content_type)
-            req.add_data(json.dumps(params, default=json_util.default))
-            req.get_method = lambda: operation[0]
+        method = getattr(requests, operation[0])
+        headers = {'content-type': self.__content_type}
+        params = {'apiKey': self.api_key}
+        data = {}
+        if operation[0] in ['get', 'delete']:
+            params.update(kwargs)
+        elif operation[0] == "post":
+            data = json.dumps(kwargs.get("data", {}), default=json_util.default)
+        elif operation[0] == "put":
+            params.update(kwargs)
+            del params['data']
+            data = json.dumps(kwargs.get("data", {}), default=json_util.default)
         else:
-            kwargs["apiKey"] = self.api_key
-            params = urllib.urlencode(kwargs)
-            req = urllib2.Request(url + "?%s" % params)
-            req.get_method = lambda: operation[0]
-        opener = urllib2.build_opener(self.proxy_handler)
-        urllib2.install_opener(opener)
-        try:
-            f = opener.open(req)
-            return {"status": f.getcode(), "result": json.loads(f.read(),
-                object_hook=json_util.object_hook)}
-        except urllib2.HTTPError, e:
-            return {"status": e.getcode(), "result": json.loads(e.read(),
-                object_hook=json_util.object_hook)}
+            raise ValueError('Method not allowed.')
+        params = requests.compat.urlencode(params)
+        response = method(url, headers=headers, params=params, data=data,
+                          proxies=self.proxies)
+        return {
+            "status": response.status_code,
+            "result": json.loads(response.text,
+                                 object_hook=json_util.object_hook)
+        }
 
     def list_databases(self):
         """Returns a list of databases name of your account.
