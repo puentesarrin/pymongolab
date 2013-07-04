@@ -57,7 +57,7 @@ setup(
     url="http://pymongolab.puentesarr.in",
     packages=['mongolabclient', 'pymongolab'],
     keywords=["mongolab", "pymongolab", "mongolabclient", "mongo", "mongodb"],
-    install_requires=["pymongo"],
+    install_requires=["pymongo", "requests"],
     license="Apache License, Version 2.0",
     classifiers=[
         "Development Status :: 4 - Beta",
